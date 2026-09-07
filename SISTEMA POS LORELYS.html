@@ -1,0 +1,2938 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LORELYS NAILS — Studio Luxury Management v2.0</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <style>
+    :root {
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: 'Playfair Display', Georgia, serif;
+
+      /* Paleta Femenina Premium: Rose Gold, Malva y Ciruela Profundo */
+      --primary: #C07086;
+      --primary-dark: #A5556B;
+      --primary-light: #FDF2F4;
+      --primary-glow: rgba(192, 112, 134, 0.25);
+
+      --navy: #2D1A24;
+      --navy-light: #4A2E3D;
+      --navy-subtle: #735363;
+
+      /* Dorado Champagne Sutil */
+      --accent: #C5A880;
+      --accent-dark: #A88B63;
+      --accent-light: #FDF9F3;
+      --accent-border: #EEDCC6;
+
+      /* Colores de Estado Semánticos */
+      --success: #2E8555;
+      --success-light: #F0FDF4;
+      --success-border: #BBF7D0;
+      
+      --danger: #D13E4B;
+      --danger-light: #FFF1F2;
+      --danger-border: #FECDD3;
+
+      --warning: #D97706;
+      --warning-light: #FFFBEB;
+      --warning-border: #FDE68A;
+
+      /* Superficies Suaves y Cálidas */
+      --bg-base: #FAF7F8;
+      --bg-surface: #FFFFFF;
+      --bg-surface-alt: #F6F1F3;
+      --bg-surface-glow: #FFFFFF;
+      
+      --border-subtle: #EFE6E9;
+      --border-focus: #C07086;
+      
+      --text-main: #2E2127;
+      --text-muted: #6E5A64;
+      --text-light: #A4919B;
+
+      --status-paid-bg: #E8F7EE;
+      --status-paid-text: #246B44;
+      --status-credit-bg: #FEECEE;
+      --status-credit-text: #B82836;
+
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+
+      --shadow-soft: 0 2px 8px -2px rgba(45, 26, 36, 0.05), 0 1px 3px 0 rgba(45, 26, 36, 0.03);
+      --shadow-elevated: 0 6px 18px -4px rgba(45, 26, 36, 0.08), 0 2px 6px -2px rgba(45, 26, 36, 0.04);
+      --shadow-modal: 0 20px 35px -8px rgba(45, 26, 36, 0.2), 0 8px 16px -6px rgba(45, 26, 36, 0.12);
+      
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --primary: #E598AC;
+      --primary-dark: #D47D93;
+      --primary-light: rgba(229, 152, 172, 0.15);
+      --primary-glow: rgba(229, 152, 172, 0.3);
+
+      --navy: #190F14;
+      --navy-light: #2A1C24;
+      --navy-subtle: #533E4A;
+
+      --accent: #DEC29E;
+      --accent-dark: #C9A980;
+      --accent-light: rgba(222, 194, 158, 0.12);
+      --accent-border: rgba(222, 194, 158, 0.3);
+
+      --bg-base: #140C10;
+      --bg-surface: #1E1319;
+      --bg-surface-alt: #2B1C24;
+      --bg-surface-glow: #24161E;
+      
+      --border-subtle: #3D2933;
+      --border-focus: #E598AC;
+      
+      --text-main: #FDF8FA;
+      --text-muted: #BBA9B2;
+      --text-light: #83707A;
+      
+      --status-paid-bg: rgba(46, 133, 85, 0.25);
+      --status-paid-text: #62DA95;
+      --status-credit-bg: rgba(209, 62, 75, 0.25);
+      --status-credit-text: #FF8F99;
+
+      --shadow-soft: 0 2px 8px 0 rgba(0, 0, 0, 0.45);
+      --shadow-elevated: 0 8px 24px 0 rgba(0, 0, 0, 0.6);
+      --shadow-modal: 0 25px 50px -10px rgba(0, 0, 0, 0.85);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-body); -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-base); color: var(--text-main); min-height: 100vh; display: flex; justify-content: center; overflow-x: hidden; transition: background-color 0.25s ease, color 0.25s ease; }
+    .serif-title { font-family: var(--font-serif); letter-spacing: 0.3px; }
+
+    /* PANTALLA LOGIN ELEGANTE */
+    #auth-screen { position: fixed; inset: 0; background: var(--navy); background-image: radial-gradient(circle at 15% 15%, rgba(192, 112, 134, 0.25) 0%, transparent 45%), radial-gradient(circle at 85% 85%, rgba(197, 168, 128, 0.15) 0%, transparent 40%); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .login-card { width: 100%; max-width: 420px; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 3rem 2.2rem; box-shadow: var(--shadow-modal); text-align: center; position: relative; overflow: hidden; animation: loginCardAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .login-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 50%, var(--navy-light) 100%); }
+
+    @keyframes loginCardAppear { from { transform: translateY(16px) scale(0.98); opacity: 0; } to { transform: translateY(0) scale(1); opacity: 1; } }
+    @keyframes shakeError { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+    .shake { animation: shakeError 0.35s ease-in-out; }
+
+    .login-logo { width: 72px; height: 72px; margin: 0 auto 1.25rem; border-radius: 18px; overflow: hidden; background: linear-gradient(135deg, var(--navy-light) 0%, var(--primary) 100%); display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 1.8rem; box-shadow: 0 8px 20px var(--primary-glow); border: 1px solid rgba(255, 255, 255, 0.15); position: relative; }
+    .login-logo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .login-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--primary-light); color: var(--primary-dark); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.35rem 0.85rem; border-radius: 9999px; margin-bottom: 1.2rem; border: 1px solid rgba(192, 112, 134, 0.25); }
+
+    /* CONTENEDOR PRINCIPAL */
+    .app-viewport { width: 100%; max-width: 580px; background: var(--bg-surface); min-height: 100vh; display: flex; flex-direction: column; position: relative; box-shadow: 0 0 45px rgba(45, 26, 36, 0.07); transition: background-color 0.25s ease; border-left: 1px solid var(--border-subtle); border-right: 1px solid var(--border-subtle); }
+
+    /* HEADER */
+    .top-header { height: 72px; padding: 0 1.2rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); position: sticky; top: 0; background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 30; transition: var(--transition); }
+    .brand-box { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; text-decoration: none; }
+    
+    .brand-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--primary) 0%, var(--navy-light) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FFFFFF; font-size: 1.15rem; box-shadow: 0 4px 12px var(--primary-glow); flex-shrink: 0; border: 1px solid rgba(255, 255, 255, 0.15); overflow: hidden; }
+    .brand-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    
+    .brand-title { font-size: 1.12rem; font-weight: 800; line-height: 1.15; color: var(--text-main); letter-spacing: 0.4px; }
+    .brand-sub { font-size: 0.62rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 2px; }
+
+    /* STATUS LED PILL */
+    .sync-status-indicator { display: inline-flex; align-items: center; gap: 0.45rem; background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); padding: 0.28rem 0.65rem; border-radius: 9999px; font-size: 0.68rem; font-weight: 700; color: var(--text-muted); }
+    .sync-dot { width: 7.5px; height: 7.5px; border-radius: 50%; transition: var(--transition); }
+    .sync-dot.waiting { background-color: var(--warning); box-shadow: 0 0 6px var(--warning); animation: pulseStatus 1.5s infinite; }
+    .sync-dot.synced { background-color: var(--success); box-shadow: 0 0 6px var(--success); }
+    @keyframes pulseStatus { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+    .header-actions { display: flex; align-items: center; gap: 0.4rem; }
+    .btn-icon-header { background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); color: var(--text-muted); width: 36px; height: 36px; border-radius: 10px; font-size: 0.85rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
+    .btn-icon-header:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary); transform: translateY(-1px); }
+    .btn-icon-header:active { transform: scale(0.96); }
+
+    /* MENÚ DE NAVEGACIÓN */
+    .main-nav-tabs { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.35rem; padding: 0.45rem 0.65rem; background: var(--bg-surface); border-bottom: 1px solid var(--border-subtle); position: sticky; top: 72px; z-index: 25; transition: var(--transition); }
+    .tab-btn { min-height: 46px; padding: 0.3rem 0.1rem; border-radius: 10px; border: none; font-weight: 600; font-size: 0.63rem; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.22rem; background: transparent; color: var(--text-muted); transition: var(--transition); }
+    .tab-btn i { font-size: 0.9rem; transition: transform 0.2s ease, color 0.2s ease; }
+    .tab-btn:hover { background: var(--bg-surface-alt); color: var(--text-main); }
+    .tab-btn.active { background: var(--primary-light); color: var(--primary); font-weight: 800; border-bottom: 2.5px solid var(--primary); }
+    .tab-btn.active i { transform: translateY(-1px); color: var(--primary); }
+    
+    .main-body { flex: 1; padding: 1.25rem 1.15rem; overflow-y: auto; padding-bottom: 125px; background: var(--bg-base); animation: fadeIn 0.2s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* CARDS Y CONTENEDORES */
+    .card-panel { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; margin-bottom: 1.1rem; box-shadow: var(--shadow-soft); transition: var(--transition); }
+    .card-panel:hover { box-shadow: var(--shadow-elevated); border-color: rgba(192, 112, 134, 0.3); }
+    
+    .panel-title { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: var(--navy-light); margin-bottom: 1.05rem; display: flex; align-items: center; justify-content: space-between; width: 100%; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.65rem; }
+    [data-theme="dark"] .panel-title { color: #E598AC; }
+    .panel-title-text { display: flex; align-items: center; gap: 0.55rem; }
+    .panel-title-badge { margin-left: auto; }
+
+    /* DASHBOARD CARDS */
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 1.1rem; }
+    .stat-card { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.15rem; display: flex; flex-direction: column; gap: 0.35rem; box-shadow: var(--shadow-soft); position: relative; overflow: hidden; transition: var(--transition); }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-elevated); }
+    .stat-card::after { content: ''; position: absolute; top: 0; left: 0; width: 3.5px; height: 100%; background: var(--primary); }
+    .stat-card:nth-child(2)::after { background: var(--accent); }
+    .stat-card:nth-child(3)::after { background: var(--danger); }
+    .stat-card:nth-child(4)::after { background: var(--success); }
+
+    .stat-card-title { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; }
+    .stat-card-val { font-size: 1.35rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.3px; line-height: 1.2; }
+
+    /* FORMULARIOS */
+    .form-group { margin-bottom: 0.95rem; display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label { font-size: 0.74rem; font-weight: 700; color: var(--text-main); letter-spacing: 0.2px; }
+    .form-control { width: 100%; min-height: 42px; padding: 0.65rem 0.85rem; border-radius: var(--radius-sm); border: 1.5px solid var(--border-subtle); font-size: 0.88rem; outline: none; background: var(--bg-surface); color: var(--text-main); transition: var(--transition); appearance: none; -webkit-appearance: none; }
+    .form-control:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--primary-light); }
+    .form-control::placeholder { color: var(--text-light); }
+    .form-control.input-error { border-color: var(--danger) !important; background: var(--danger-light) !important; box-shadow: 0 0 0 3px rgba(209, 62, 75, 0.18) !important; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+
+    .password-wrapper { position: relative; display: flex; align-items: center; }
+    .password-wrapper .form-control { padding-right: 2.8rem; }
+    .toggle-password-btn { position: absolute; right: 0.8rem; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; padding: 0.35rem; transition: var(--transition); }
+    .toggle-password-btn:hover { color: var(--primary); }
+
+    /* CONTROLES DE PAGO */
+    .payment-status-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin-bottom: 1.05rem; background: var(--bg-surface-alt); padding: 0.3rem; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); }
+    .toggle-btn { min-height: 40px; padding: 0.45rem; border: none; border-radius: 8px; font-weight: 700; font-size: 0.78rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.4rem; color: var(--text-muted); background: transparent; }
+    .toggle-btn.active-paid { background: var(--bg-surface); color: var(--success); box-shadow: var(--shadow-soft); font-weight: 800; border: 1px solid var(--border-subtle); }
+    .toggle-btn.active-credit { background: var(--bg-surface); color: var(--danger); box-shadow: var(--shadow-soft); font-weight: 800; border: 1px solid var(--border-subtle); }
+
+    /* BOTONES DE SERVICIO CHIPS */
+    .catalog-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.1rem; }
+    .chip-btn { min-height: 34px; background: var(--bg-surface); border: 1.5px solid var(--border-subtle); padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.74rem; font-weight: 600; cursor: pointer; transition: var(--transition); color: var(--text-main); display: flex; align-items: center; gap: 0.4rem; box-shadow: var(--shadow-soft); }
+    .chip-btn:hover { background: var(--primary-light); border-color: var(--primary); color: var(--primary-dark); transform: translateY(-1px); }
+    .chip-btn:active { transform: scale(0.97); }
+
+    /* ITEMS FACTURADOS */
+    .items-applied-box { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 0.45rem; }
+    .applied-item-row { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0.95rem; background: var(--bg-surface); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); border-left: 3.5px solid var(--primary); box-shadow: var(--shadow-soft); transition: var(--transition); }
+    .applied-item-row:hover { border-color: var(--border-focus); }
+    .item-del-btn { min-width: 32px; min-height: 32px; background: var(--danger-light); border-radius: 8px; border: 1px solid var(--danger-border); color: var(--danger); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; transition: var(--transition); }
+    .item-del-btn:hover { background: var(--danger); color: #FFFFFF; }
+
+    /* DIRECTORIO Y TARJETAS */
+    .clients-directory-list { display: flex; flex-direction: column; gap: 0.65rem; }
+    .client-card-item { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.95rem 1.05rem; display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; box-shadow: var(--shadow-soft); transition: var(--transition); }
+    .client-card-item:hover { transform: translateY(-1px); box-shadow: var(--shadow-elevated); border-color: rgba(192, 112, 134, 0.35); }
+    .client-card-item.selected-debt { border-color: var(--primary); background: var(--primary-light); }
+    
+    .client-avatar { width: 38px; height: 38px; border-radius: 10px; background: var(--primary-light); color: var(--primary-dark); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; border: 1px solid rgba(192, 112, 134, 0.2); }
+    .client-avatar.debt { background: var(--danger-light); color: var(--danger); border-color: var(--danger-border); }
+    .client-avatar.appointment { background: var(--accent-light); color: var(--accent-dark); border-color: var(--accent-border); }
+    .client-avatar.service { background: var(--bg-surface-alt); color: var(--primary-dark); border-color: var(--border-subtle); }
+    [data-theme="dark"] .client-avatar.service { color: #E598AC; }
+
+    .client-info-meta { flex: 1; min-width: 0; }
+    .client-info-meta strong { font-size: 0.88rem; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-main); font-weight: 700; }
+    .client-info-meta span { font-size: 0.74rem; color: var(--text-muted); display: block; margin-top: 2px; }
+    
+    /* BOTONES */
+    .btn-use-client { min-height: 32px; background: var(--primary-light); color: var(--primary-dark); border: 1px solid rgba(192, 112, 134, 0.25); padding: 0.35rem 0.75rem; border-radius: 8px; font-weight: 700; font-size: 0.72rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
+    .btn-use-client:hover { background: var(--primary); color: #FFFFFF; }
+    
+    .btn-settle-card { min-height: 32px; background: var(--success-light); color: var(--success); border: 1px solid var(--success-border); padding: 0.35rem 0.75rem; border-radius: 8px; font-weight: 700; font-size: 0.72rem; cursor: pointer; transition: var(--transition); display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
+    .btn-settle-card:hover { background: var(--success); color: #FFFFFF; }
+
+    .btn-edit-client { min-width: 32px; min-height: 32px; background: var(--bg-surface-alt); border: 1px solid var(--border-subtle); color: var(--text-muted); border-radius: 8px; cursor: pointer; font-size: 0.78rem; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+    .btn-edit-client:hover { background: var(--primary-light); color: var(--primary-dark); border-color: var(--primary); }
+
+    .btn-del-client { min-width: 32px; min-height: 32px; background: var(--danger-light); border: 1px solid var(--danger-border); color: var(--danger); border-radius: 8px; cursor: pointer; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; opacity: 0.8; transition: var(--transition); }
+    .btn-del-client:hover { opacity: 1; background: var(--danger); color: #FFFFFF; }
+
+    /* BARRA INFERIOR FIJA */
+    .bottom-bar { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 580px; background: var(--bg-surface); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--border-subtle); padding: 0.85rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.85rem; z-index: 40; box-shadow: 0 -4px 18px rgba(45, 26, 36, 0.08); transition: var(--transition); }
+    .total-title-muted { font-size: 0.65rem; color: var(--text-muted); font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; }
+    .total-val { font-size: 1.35rem; font-weight: 800; color: var(--primary); line-height: 1.15; }
+
+    .btn-emit { min-height: 44px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #FFFFFF; border: none; padding: 0.65rem 1.4rem; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; box-shadow: 0 4px 14px var(--primary-glow); transition: var(--transition); white-space: nowrap; }
+    .btn-emit:hover { transform: translateY(-1px); box-shadow: 0 6px 18px var(--primary-glow); }
+    .btn-emit:active { transform: scale(0.98); }
+
+    /* MODALES */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(45, 26, 36, 0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 1.2rem; animation: fadeIn 0.2s ease; }
+    .modal-card { background: var(--bg-surface); color: var(--text-main); border-radius: var(--radius-md); width: 100%; max-width: 440px; max-height: 90vh; overflow-y: auto; padding: 1.5rem; box-shadow: var(--shadow-modal); text-align: center; border: 1px solid var(--border-subtle); position: relative; animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    @keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* RECIBO / COMPROBANTE CON ESTILO CÁLIDO Y ELEGANTE */
+    .receipt-container { background: #FFFFFF; color: #2E2127; padding: 26px 22px; width: 310px; margin: 0 auto 1.25rem; border-radius: 14px; font-size: 11.5px; border: 1px solid #EFE6E9; box-shadow: 0 8px 24px rgba(45, 26, 36, 0.08); position: relative; line-height: 1.45; }
+    .receipt-container strong, .debt-receipt-container strong, .appointment-receipt-container strong { color: #2E2127; }
+    .rcp-header { text-align: center; margin-bottom: 12px; }
+    .rcp-logo-img { max-width: 54px; max-height: 54px; margin: 0 auto 8px; display: block; object-fit: contain; border-radius: 10px; }
+    .rcp-header strong { font-family: var(--font-serif); font-size: 18px; letter-spacing: 0.5px; color: #4A2E3D; font-weight: 700; display: block; }
+    .rcp-header span { font-size: 8.5px; color: #8F7280; text-transform: uppercase; letter-spacing: 1.4px; font-weight: 700; }
+    .rcp-divider { border-top: 1px dashed #E5D5DC; margin: 10px 0; }
+    .rcp-row { display: flex; justify-content: space-between; margin: 4px 0; font-size: 11px; }
+
+    .debt-receipt-container { background: #FFFFFF; color: #2E2127; padding: 26px 22px; width: 310px; margin: 0 auto 1.25rem; border-radius: 14px; font-size: 11.5px; border: 2px solid #FDA4AF; box-shadow: 0 8px 24px rgba(209, 62, 75, 0.08); position: relative; line-height: 1.45; }
+    .appointment-receipt-container { background: #FFFFFF; color: #2E2127; padding: 26px 22px; width: 310px; margin: 0 auto 1.25rem; border-radius: 14px; font-size: 11.5px; border: 2px solid #C5A880; box-shadow: 0 8px 24px rgba(197, 168, 128, 0.12); position: relative; line-height: 1.45; }
+
+    /* BADGES */
+    .status-badge { display: inline-block; padding: 3px 9px; border-radius: 9999px; font-weight: 800; font-size: 8.5px; letter-spacing: 0.8px; text-transform: uppercase; margin: 3px 0 6px; }
+    .status-badge.paid { background: #E8F7EE; color: #246B44; border: 1px solid #BBF7D0; }
+    .status-badge.credit { background: #FEECEE; color: #B82836; border: 1px solid #FECDD3; }
+    .status-badge.app-pending { background: #FEF3C7; color: #B45309; border: 1px solid #FDE68A; }
+    .status-badge.app-confirmed { background: #FDF2F4; color: #A5556B; border: 1px solid #F9D2DC; }
+    .status-badge.app-completed { background: #E8F7EE; color: #246B44; border: 1px solid #BBF7D0; }
+
+    /* ACCIONES DE MODAL */
+    .btn-action { width: 100%; min-height: 44px; padding: 0.65rem 1rem; border-radius: var(--radius-sm); border: none; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: var(--transition); }
+    .btn-ws { background: #22C55E; color: #FFFFFF; box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25); }
+    .btn-ws:hover { background: #16A34A; }
+    .btn-ws:active { transform: scale(0.98); }
+    .btn-outline { background: var(--bg-surface); border: 1.5px solid var(--border-subtle); color: var(--text-main); }
+    .btn-outline:hover { background: var(--bg-surface-alt); border-color: var(--text-muted); }
+    .btn-outline:active { transform: scale(0.98); }
+
+    .settle-summary-box { background: var(--bg-surface-alt); border-radius: var(--radius-sm); padding: 1.05rem; margin: 0.9rem 0; text-align: left; font-size: 0.82rem; border: 1px solid var(--border-subtle); }
+    .settle-summary-row { display: flex; justify-content: space-between; margin-bottom: 0.45rem; }
+
+    #toast-container { position: fixed; top: 1.2rem; left: 50%; transform: translateX(-50%); width: 90%; max-width: 380px; z-index: 200; display: flex; flex-direction: column; gap: 0.45rem; pointer-events: none; }
+    .toast { background: var(--navy); color: #FDF8FA; padding: 0.85rem 1.1rem; border-radius: var(--radius-sm); box-shadow: var(--shadow-modal); font-size: 0.84rem; font-weight: 600; border: 1px solid var(--navy-subtle); border-left: 4px solid var(--primary); pointer-events: auto; animation: toastIn 0.25s cubic-bezier(0.16, 1, 0.3, 1); display: flex; align-items: center; gap: 0.6rem; }
+    @keyframes toastIn { from { transform: translateY(-12px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  </style>
+</head>
+<body>
+
+  <div id="toast-container"></div>
+
+  <!-- PANTALLA DE ACCESO INTERACTIVA -->
+  <div id="auth-screen">
+    <div class="login-card" id="login-card-container">
+      <div class="login-logo" id="login-logo-container">
+        <i class="fa-solid fa-gem"></i>
+      </div>
+      <div class="login-badge">
+        <i class="fa-solid fa-sparkles"></i> Studio Management v2.0
+      </div>
+      <h2 class="serif-title" style="font-size:1.65rem; margin-bottom:0.25rem; color:var(--text-main); font-weight:700;">LORELYS NAILS</h2>
+      <p style="color:var(--text-muted); font-size:0.8rem; margin-bottom:1.6rem; font-weight:500;">Gestión Exclusiva de Salón & Finanzas</p>
+
+      <form onsubmit="event.preventDefault(); studioApp.handleLogin();">
+        <div class="form-group" style="text-align:left;">
+          <label>Usuario</label>
+          <input type="text" id="login-username" class="form-control" placeholder="admin" required autocomplete="username">
+        </div>
+        
+        <div class="form-group" style="text-align:left;">
+          <label>Contraseña</label>
+          <div class="password-wrapper">
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+            <button type="button" class="toggle-password-btn" onclick="studioApp.togglePasswordVisibility()" title="Mostrar/Ocultar contraseña">
+              <i class="fa-solid fa-eye" id="eye-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-action" style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color:#FFFFFF; margin-top:1.4rem; box-shadow:0 4px 12px var(--primary-glow);">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar Sesión en el Studio
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="app-viewport" id="app-main-viewport" style="display:none;">
+    
+    <!-- ENCABEZADO -->
+    <header class="top-header">
+      <div class="brand-box" onclick="studioApp.switchTab('dashboard')">
+        <div class="brand-icon" title="Panel Principal" id="brand-logo-container">
+          <i class="fa-solid fa-gem" id="brand-default-icon"></i>
+        </div>
+        <div>
+          <div class="brand-title serif-title" id="header-brand-title">LORELYS NAILS</div>
+          <div class="brand-sub" id="header-brand-sub">Studio Luxury Management ✨</div>
+        </div>
+      </div>
+      
+      <!-- INDICADOR LED DE SINCRONIZACIÓN -->
+      <div class="sync-status-indicator" id="sync-status-badge" title="Estado de conexión con Google Sheets">
+        <div class="sync-dot waiting" id="sync-dot-light"></div>
+        <span id="sync-status-text">En espera...</span>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn-icon-header" id="btn-toggle-theme" onclick="studioApp.toggleTheme()" title="Cambiar Tema">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="btn-icon-header" onclick="studioApp.switchTab('config')" title="Configuración del Salón"><i class="fa-solid fa-sliders"></i></button>
+        <button class="btn-icon-header" onclick="studioApp.logout()" title="Cerrar Sesión" style="color:var(--danger);"><i class="fa-solid fa-power-off"></i></button>
+      </div>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="main-nav-tabs">
+      <button type="button" class="tab-btn active" id="tab-nav-dashboard" onclick="studioApp.switchTab('dashboard')">
+        <i class="fa-solid fa-chart-pie"></i> Resumen
+      </button>
+      <button type="button" class="tab-btn" id="tab-nav-billing" onclick="studioApp.switchTab('billing')">
+        <i class="fa-solid fa-receipt"></i> Facturar
+      </button>
+      <button type="button" class="tab-btn" id="tab-nav-catalog" onclick="studioApp.switchTab('catalog')">
+        <i class="fa-solid fa-layer-group"></i> Catálogo
+      </button>
+      <button type="button" class="tab-btn" id="tab-nav-appointments" onclick="studioApp.switchTab('appointments')">
+        <i class="fa-solid fa-calendar-days"></i> Agenda
+      </button>
+      <button type="button" class="tab-btn" id="tab-nav-clients" onclick="studioApp.switchTab('clients')">
+        <i class="fa-solid fa-users"></i> Clientas
+      </button>
+      <button type="button" class="tab-btn" id="tab-nav-debts" onclick="studioApp.switchTab('debts')">
+        <i class="fa-solid fa-hand-holding-dollar"></i> Cobrar
+      </button>
+    </nav>
+
+    <!-- VISTA 0: DASHBOARD -->
+    <main class="main-body" id="view-dashboard">
+      <section class="card-panel" style="background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color:#FFFFFF; border:none; position:relative; overflow:hidden;">
+        <div style="position:relative; z-index:2;">
+          <div style="font-size:0.7rem; font-weight:800; letter-spacing:1px; color:var(--accent); text-transform:uppercase; margin-bottom:0.25rem;">Panel de Gestión</div>
+          <h2 class="serif-title" style="font-size:1.45rem; color:#FFFFFF; margin-bottom:0.35rem; font-weight:700;">¡Hola, Lorelys! ✨</h2>
+          <p style="font-size:0.82rem; color:#DECDD6; font-weight:500;">Aquí tienes un vistazo rápido de las actividades y ventas de hoy.</p>
+        </div>
+      </section>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card-title">Ventas de Hoy</span>
+          <span class="stat-card-val" id="dash-sales-today">RD$ 0.00</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-title">Citas para Hoy</span>
+          <span class="stat-card-val" id="dash-app-today" style="color:var(--accent);">0 citas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-title">Por Cobrar (Fiado)</span>
+          <span class="stat-card-val" id="dash-debts-total" style="color:var(--danger);">RD$ 0.00</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card-title">Clientas Totales</span>
+          <span class="stat-card-val" id="dash-clients-total" style="color:var(--success);">0 reg.</span>
+        </div>
+      </div>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-bolt" style="color:var(--accent);"></i>
+            <span>Accesos Directos</span>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem;">
+          <button class="btn-action" style="background:var(--primary); color:#FFFFFF; min-height:44px; font-size:0.82rem;" onclick="studioApp.switchTab('billing')">
+            <i class="fa-solid fa-receipt"></i> Nueva Factura
+          </button>
+          <button class="btn-action btn-outline" style="min-height:44px; font-size:0.82rem;" onclick="studioApp.switchTab('appointments')">
+            <i class="fa-solid fa-calendar-plus"></i> Agendar Cita
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- VISTA 1: FACTURACIÓN -->
+    <main class="main-body" id="view-billing" style="display:none;">
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-user-check" style="color:var(--primary);"></i>
+            <span>1. Información de la Clienta</span>
+          </div>
+          <span id="saved-client-badge" class="panel-title-badge" style="display:none; font-size:0.65rem; background:var(--success-light); color:var(--success); border:1px solid var(--success-border); padding:0.2rem 0.55rem; border-radius:9999px; font-weight:800;">✓ Registrada</span>
+        </div>
+
+        <div class="form-group">
+          <label>Cargar Clienta Guardada</label>
+          <select id="select-registered-client" class="form-control" onchange="studioApp.handleClientSelect(this.value)">
+            <option value="">-- Seleccionar de la lista o escribir abajo --</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre Completo *</label>
+          <input type="text" id="cli-name" class="form-control" placeholder="Ej. María Rodríguez">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>WhatsApp de Envío *</label>
+            <input type="tel" id="cli-phone" class="form-control" placeholder="8095550101">
+          </div>
+          <div class="form-group">
+            <label>Instagram / Nota</label>
+            <input type="text" id="cli-ig" class="form-control" placeholder="@maria.rd">
+          </div>
+        </div>
+
+        <div style="margin-top:0.4rem; display:flex; align-items:center; gap:0.5rem;">
+          <input type="checkbox" id="chk-save-client-auto" checked style="width:16px; height:16px; accent-color:var(--primary); cursor:pointer;">
+          <label for="chk-save-client-auto" style="font-size:0.75rem; color:var(--text-muted); cursor:pointer; font-weight:600;">Guardar datos automáticamente en la nube</label>
+        </div>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-list-check" style="color:var(--accent);"></i>
+            <span>2. Servicios Realizados</span>
+          </div>
+        </div>
+        
+        <label style="font-size:0.72rem; color:var(--text-muted); font-weight:700; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:0.45rem; display:block;">Seleccionar del Catálogo:</label>
+        <div class="form-group" style="margin-bottom:0.9rem;">
+          <select id="select-catalog-service" class="form-control" onchange="studioApp.handleCatalogDropdownSelect(this.value)">
+            <option value="">-- Seleccionar servicio del catálogo --</option>
+          </select>
+        </div>
+
+        <label style="font-size:0.72rem; color:var(--text-muted); font-weight:700; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:0.45rem; display:block;">Acceso Rápido:</label>
+        <div class="catalog-chips" id="quick-services-chips"></div>
+
+        <div style="background:var(--bg-surface-alt); padding:0.95rem; border-radius:var(--radius-sm); margin-bottom:0.9rem; border:1px solid var(--border-subtle);">
+          <div style="font-size:0.72rem; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; margin-bottom:0.45rem; color:var(--text-muted);">Servicio o Extra Personalizado:</div>
+          <div class="form-row">
+            <input type="text" id="custom-item-name" class="form-control" placeholder="Ej. Reparación / Efecto Especial">
+            <div style="display:flex; gap:0.4rem;">
+              <input type="number" id="custom-item-price" class="form-control" placeholder="RD$">
+              <button class="btn-emit" style="min-height:42px; padding:0 0.9rem; border-radius:var(--radius-sm);" onclick="studioApp.addCustomItem()"><i class="fa-solid fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="items-applied-box" id="applied-items-list"></div>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-credit-card" style="color:var(--navy-light);"></i>
+            <span>3. Condición de Pago & Cita</span>
+          </div>
+        </div>
+        
+        <label style="font-size:0.74rem; font-weight:700; margin-bottom:0.4rem; display:block;">Estado del Pago *</label>
+        <div class="payment-status-toggle">
+          <button type="button" class="toggle-btn active-paid" id="btn-status-paid" onclick="studioApp.setPaymentType('PAGADO')">
+            <i class="fa-solid fa-circle-check"></i> Pagado al Instante
+          </button>
+          <button type="button" class="toggle-btn" id="btn-status-credit" onclick="studioApp.setPaymentType('FIADO')">
+            <i class="fa-solid fa-clock-rotate-left"></i> A Crédito / Fiado
+          </button>
+        </div>
+
+        <div id="paid-details-box">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Método de Pago</label>
+              <select id="pay-method" class="form-control">
+                <option value="Transferencia">Transferencia Bancaria</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Tarjeta">Tarjeta de Crédito / Débito</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Descuento Especial (RD$)</label>
+              <input type="number" id="pay-discount" class="form-control" value="0" oninput="studioApp.calculateTotals()">
+            </div>
+          </div>
+        </div>
+
+        <div id="credit-details-box" style="display:none; background:var(--danger-light); padding:0.95rem; border-radius:var(--radius-sm); margin-bottom:0.9rem; border:1px solid var(--danger-border);">
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label style="color:var(--danger);">Abono Inicial (RD$)</label>
+              <input type="number" id="credit-downpayment" class="form-control" value="0" placeholder="0.00" oninput="studioApp.calculateTotals()">
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label style="color:var(--danger);">Fecha Límite Acordada</label>
+              <input type="date" id="credit-due-date" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Próximo Retoque Sugerido</label>
+          <input type="date" id="pay-next-date" class="form-control">
+        </div>
+      </section>
+    </main>
+
+    <!-- VISTA: CATÁLOGO DE SERVICIOS -->
+    <main class="main-body" id="view-catalog" style="display:none;">
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text" id="service-form-title-box">
+            <i class="fa-solid fa-circle-plus" style="color:var(--primary);"></i>
+            <span id="service-form-title">Crear Nuevo Servicio</span>
+          </div>
+          <button id="btn-cancel-edit-service" style="display:none; background:none; border:none; color:var(--text-muted); font-size:0.74rem; font-weight:700; cursor:pointer;" onclick="studioApp.resetServiceForm()">Cancelar</button>
+        </div>
+        <form onsubmit="event.preventDefault(); studioApp.saveServiceFromForm();">
+          <input type="hidden" id="srv-edit-id" value="">
+          <div class="form-group">
+            <label>Nombre del Servicio *</label>
+            <input type="text" id="srv-name" class="form-control" placeholder="Ej. Manicure Ruso con Nivelación" required>
+          </div>
+          <div class="form-group">
+            <label>Precio Regular (RD$) *</label>
+            <input type="number" id="srv-price" class="form-control" placeholder="Ej. 1200" required>
+          </div>
+          <button type="submit" id="btn-service-submit" class="btn-action" style="background:var(--primary); color:#FFFFFF; margin-top:0.75rem;">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar en Catálogo
+          </button>
+        </form>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-layer-group" style="color:var(--accent);"></i>
+            <span>Servicios Disponibles</span>
+          </div>
+          <span id="srv-count-badge" class="panel-title-badge" style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">0 servicios</span>
+        </div>
+        <div class="clients-directory-list" id="services-items-container"></div>
+      </section>
+    </main>
+
+    <!-- VISTA 2: AGENDA Y CITAS -->
+    <main class="main-body" id="view-appointments" style="display:none;">
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text" id="app-form-title-box">
+            <i class="fa-solid fa-calendar-plus" style="color:var(--primary);"></i>
+            <span id="app-form-title">Programar Nueva Cita</span>
+          </div>
+          <button id="btn-cancel-edit-app" style="display:none; background:none; border:none; color:var(--text-muted); font-size:0.74rem; font-weight:700; cursor:pointer;" onclick="studioApp.resetAppointmentForm()">Cancelar Edición</button>
+        </div>
+        <form onsubmit="event.preventDefault(); studioApp.saveAppointmentFromForm();">
+          <input type="hidden" id="app-edit-id" value="">
+          
+          <div class="form-group">
+            <label>Seleccionar Clienta Registrada</label>
+            <select id="app-select-client" class="form-control" onchange="studioApp.handleAppClientSelect(this.value)">
+              <option value="">-- Seleccionar de la lista o escribir abajo --</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Nombre de la Clienta *</label>
+            <input type="text" id="app-client-name" class="form-control" placeholder="Ej. Carla Méndez" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>WhatsApp *</label>
+              <input type="tel" id="app-client-phone" class="form-control" placeholder="8095551122" required>
+            </div>
+            <div class="form-group">
+              <label>Servicio a Realizar *</label>
+              <input type="text" id="app-service-name" class="form-control" placeholder="Ej. Acrílicas Full Set" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fecha de Cita *</label>
+              <input type="date" id="app-date" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Hora *</label>
+              <input type="time" id="app-time" class="form-control" value="10:00" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Estado de Cita</label>
+            <select id="app-status" class="form-control">
+              <option value="PENDIENTE">Pendiente</option>
+              <option value="CONFIRMADA">Confirmada</option>
+              <option value="COMPLETADA">Completada</option>
+              <option value="CANCELADA">Cancelada</option>
+            </select>
+          </div>
+          
+          <button type="submit" id="btn-app-submit" class="btn-action" style="background:var(--primary); color:#FFFFFF; margin-top:0.75rem;">
+            <i class="fa-solid fa-calendar-check"></i> Guardar Cita en Agenda
+          </button>
+        </form>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-calendar-days" style="color:var(--accent);"></i>
+            <span>Agenda de Citas</span>
+          </div>
+          <span id="app-count-badge" class="panel-title-badge" style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">0 programadas</span>
+        </div>
+        
+        <div class="form-group" style="margin-bottom:0.95rem;">
+          <input type="text" id="app-search" class="form-control" placeholder="🔍 Buscar por clienta o servicio..." oninput="studioApp.filterAppointments(this.value)">
+        </div>
+
+        <div class="clients-directory-list" id="appointments-items-container"></div>
+      </section>
+    </main>
+
+    <!-- VISTA 3: CLIENTAS -->
+    <main class="main-body" id="view-clients" style="display:none;">
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text" id="client-form-title-box">
+            <i class="fa-solid fa-user-plus" style="color:var(--primary);"></i>
+            <span id="client-form-title">Registrar Nueva Clienta</span>
+          </div>
+          <button id="btn-cancel-edit-client" style="display:none; background:none; border:none; color:var(--text-muted); font-size:0.74rem; font-weight:700; cursor:pointer;" onclick="studioApp.resetClientForm()">Cancelar Edición</button>
+        </div>
+        <form onsubmit="event.preventDefault(); studioApp.saveClientFromForm();">
+          <input type="hidden" id="dir-edit-id" value="">
+          <div class="form-group">
+            <label>Nombre y Apellido *</label>
+            <input type="text" id="dir-name" class="form-control" placeholder="Ej. Gabriela Pérez" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>WhatsApp / Teléfono *</label>
+              <input type="tel" id="dir-phone" class="form-control" placeholder="8095551122" required>
+            </div>
+            <div class="form-group">
+              <label>Instagram</label>
+              <input type="text" id="dir-ig" class="form-control" placeholder="@gaby.nails">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Notas de Preferencia (Opcional)</label>
+            <input type="text" id="dir-notes" class="form-control" placeholder="Ej. Tono Nude, uñas almendradas, retiro cuidadoso">
+          </div>
+          <button type="submit" id="btn-client-submit" class="btn-action" style="background:var(--primary); color:#FFFFFF; margin-top:0.75rem;">
+            <i class="fa-solid fa-floppy-disk"></i> Guardar en Directorio
+          </button>
+        </form>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-address-book" style="color:var(--accent);"></i>
+            <span>Directorio de Clientas</span>
+          </div>
+          <span id="dir-count-badge" class="panel-title-badge" style="font-size:0.72rem; color:var(--text-muted); font-weight:700;">0 guardadas</span>
+        </div>
+        
+        <div class="form-group" style="margin-bottom:0.95rem;">
+          <input type="text" id="dir-search" class="form-control" placeholder="🔍 Buscar por nombre o teléfono..." oninput="studioApp.filterClientsDirectory(this.value)">
+        </div>
+
+        <div class="clients-directory-list" id="directory-items-container"></div>
+      </section>
+    </main>
+
+    <!-- VISTA 4: CUENTAS POR COBRAR -->
+    <main class="main-body" id="view-debts" style="display:none;">
+      <section class="card-panel" style="background:var(--danger-light); border-color:var(--danger-border);">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div style="font-size:0.7rem; font-weight:800; color:var(--danger); text-transform:uppercase; letter-spacing:0.6px;">Total Pendiente por Cobrar:</div>
+            <div id="debts-total-sum" style="font-size:1.65rem; font-weight:800; color:var(--danger); line-height:1.2;">RD$ 0.00</div>
+          </div>
+          <div style="text-align:right;">
+            <span id="debts-count-badge" style="font-size:0.74rem; background:var(--bg-surface); color:var(--danger); padding:0.35rem 0.75rem; border-radius:9999px; font-weight:800; border:1px solid var(--danger-border); box-shadow:var(--shadow-soft);">0 cuentas</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-clock-rotate-left" style="color:var(--danger);"></i>
+            <span>Historial de Cuentas Fiadas</span>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.95rem; padding-bottom:0.65rem; border-bottom:1px solid var(--border-subtle);">
+          <button type="button" onclick="studioApp.selectAllDebts(true)" style="background:none; border:none; color:var(--primary); font-size:0.75rem; font-weight:800; cursor:pointer;">Seleccionar Todas</button>
+          <button type="button" onclick="studioApp.selectAllDebts(false)" style="background:none; border:none; color:var(--text-muted); font-size:0.75rem; font-weight:800; cursor:pointer;">Deseleccionar</button>
+        </div>
+
+        <div class="clients-directory-list" id="debts-items-container"></div>
+      </section>
+    </main>
+
+    <!-- VISTA 5: CONFIGURACIÓN -->
+    <main class="main-body" id="view-config" style="display:none;">
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-sliders" style="color:var(--accent);"></i>
+            <span>Personalización del Negocio</span>
+          </div>
+        </div>
+
+        <form onsubmit="event.preventDefault(); studioApp.saveStudioConfig();">
+          <div class="form-group">
+            <label>Hipervínculo / URL del Logo (Imagen PNG o JPG)</label>
+            <input type="url" id="cfg-logo-url" class="form-control" placeholder="https://ejemplo.com/tu-logo.png">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre del Studio</label>
+              <input type="text" id="cfg-studio-name" class="form-control" placeholder="LORELYS NAILS" required>
+            </div>
+            <div class="form-group">
+              <label>Subtítulo / Eslogan</label>
+              <input type="text" id="cfg-studio-sub" class="form-control" placeholder="Studio Luxury Management ✨">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teléfono Oficial</label>
+              <input type="tel" id="cfg-studio-phone" class="form-control" placeholder="8095550101">
+            </div>
+            <div class="form-group">
+              <label>Instagram Oficial</label>
+              <input type="text" id="cfg-studio-ig" class="form-control" placeholder="@lorelys.nails">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Mensaje de Pie de Comprobante</label>
+            <input type="text" id="cfg-studio-footer" class="form-control" placeholder="¡Gracias por tu preferencia! Lorelys Nails te espera pronto 💕✨">
+          </div>
+
+          <button type="submit" class="btn-action" style="background:var(--primary); color:#FFFFFF; margin-top:0.75rem;">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Guardar Ajustes
+          </button>
+        </form>
+      </section>
+
+      <section class="card-panel">
+        <div class="panel-title">
+          <div class="panel-title-text">
+            <i class="fa-solid fa-shield-halved" style="color:var(--navy-light);"></i>
+            <span>Seguridad de Acceso</span>
+          </div>
+        </div>
+        <form onsubmit="event.preventDefault(); studioApp.updateCredentials();">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Usuario</label>
+              <input type="text" id="cfg-auth-user" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Nueva Contraseña</label>
+              <input type="password" id="cfg-auth-pass" class="form-control" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-action btn-outline" style="min-height:44px; font-size:0.82rem;">
+            <i class="fa-solid fa-key"></i> Actualizar Credenciales
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- FOOTER BOTONES FLOTANTES -->
+    <footer class="bottom-bar" id="app-bottom-bar" style="display:none;">
+      <div>
+        <div class="total-title-muted" id="bar-total-label">TOTAL FACTURADO:</div>
+        <div class="total-val" id="bar-total-val">RD$ 0.00</div>
+      </div>
+      <button class="btn-emit" onclick="studioApp.generateAndPreviewReceipt()">
+        <i class="fa-brands fa-whatsapp"></i> Enviar Recibo
+      </button>
+    </footer>
+
+    <footer class="bottom-bar" id="debts-bottom-bar" style="display:none;">
+      <div>
+        <div class="total-title-muted">SELECCIONADAS:</div>
+        <div class="total-val" id="debts-selected-sum" style="font-size:1.15rem; color:var(--danger);">RD$ 0.00</div>
+      </div>
+      <button class="btn-emit" style="background:var(--success);" onclick="studioApp.sendBatchReminders()">
+        <i class="fa-brands fa-whatsapp"></i> Cobrar (<span id="debts-selected-count">0</span>)
+      </button>
+    </footer>
+  </div>
+
+  <!-- MODAL COMPROBANTE FACTURA -->
+  <div class="modal-overlay" id="modal-receipt-view">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h3 class="serif-title" style="font-size:1.25rem; font-weight:700; color:var(--navy-light);">Comprobante Oficial ✨</h3>
+        <button onclick="studioApp.closeReceiptModalAndReset()" style="background:var(--bg-surface-alt); border:1px solid var(--border-subtle); width:34px; height:34px; border-radius:10px; font-size:0.95rem; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center;">✕</button>
+      </div>
+
+      <div id="receipt-capture-area" class="receipt-container">
+        <div class="rcp-header">
+          <div id="rcp-logo-wrapper"></div>
+          <strong id="rcp-studio-name-view">LORELYS NAILS</strong>
+          <span id="rcp-studio-sub-view">Studio de Belleza & Cuidado</span>
+          <div id="rcp-date-view" style="font-size:9.5px; color:#8F7280; margin-top:3px;">-</div>
+        </div>
+        
+        <div class="rcp-divider"></div>
+        <div style="text-align:center;">
+          <span id="rcp-status-badge" class="status-badge paid">PAGADO</span>
+        </div>
+
+        <div class="rcp-row"><span>COMPROBANTE:</span><strong id="rcp-id-view">-</strong></div>
+        <div class="rcp-row"><span>CLIENTA:</span><span id="rcp-client-view" style="font-weight:700;">-</span></div>
+        <div class="rcp-row"><span>ATENDIDA POR:</span><span style="font-weight:600; color:var(--primary-dark);">Lorelys</span></div>
+        
+        <div class="rcp-divider"></div>
+        <div id="rcp-items-list-view"></div>
+        
+        <div class="rcp-divider"></div>
+        <div class="rcp-row"><span>SUBTOTAL:</span><span id="rcp-subtotal-view">RD$ 0.00</span></div>
+        <div class="rcp-row" id="rcp-discount-row" style="display:none; color:var(--danger);">
+          <span>DESCUENTO:</span><span id="rcp-discount-view">-RD$ 0.00</span>
+        </div>
+
+        <div id="rcp-paid-summary">
+          <div class="rcp-row" style="font-weight:800; font-size:13.5px; color:#246B44; margin-top:4px;">
+            <span>TOTAL PAGADO:</span><span id="rcp-total-view">RD$ 0.00</span>
+          </div>
+          <div class="rcp-row" style="color:#8F7280; font-size:9.5px;"><span>MÉTODO:</span><span id="rcp-pay-view">-</span></div>
+        </div>
+
+        <div id="rcp-credit-summary" style="display:none;">
+          <div class="rcp-row" style="color:#246B44;">
+            <span>ABONO INICIAL:</span><span id="rcp-downpayment-view">RD$ 0.00</span>
+          </div>
+          <div class="rcp-row" style="font-weight:800; font-size:13.5px; color:#B82836; margin-top:4px;">
+            <span>BALANCE PENDIENTE:</span><span id="rcp-pending-view">RD$ 0.00</span>
+          </div>
+          <div class="rcp-row" id="rcp-due-date-row" style="display:none; color:#8F7280; font-size:9.5px;">
+            <span>FECHA LÍMITE:</span><span id="rcp-due-date-view">-</span>
+          </div>
+        </div>
+        
+        <div id="rcp-next-visit-box" style="display:none; background:#FBF6F8; padding:6px; border-radius:8px; margin-top:8px; text-align:center; font-size:9.5px; border:1px solid #EFE6E9;">
+          💅 <strong>Próximo retoque sugerido:</strong> <span id="rcp-next-date-view"></span>
+        </div>
+
+        <div class="rcp-divider"></div>
+        <div id="rcp-footer-note-view" style="text-align:center; font-size:9.5px; color:#8F7280; font-style:italic;">
+          ¡Gracias por tu preferencia! Lorelys Nails te espera pronto 💕✨
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+        <button class="btn-action btn-ws" id="btn-send-to-client-ws">
+          <i class="fa-brands fa-whatsapp"></i> Compartir Comprobante a WhatsApp
+        </button>
+        <button class="btn-action btn-outline" onclick="studioApp.downloadReceiptPNG()">
+          <i class="fa-solid fa-download"></i> Guardar Imagen PNG en Galería
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL COMPROBANTE CITA / AGENDA -->
+  <div class="modal-overlay" id="modal-appointment-receipt-view">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h3 class="serif-title" style="font-size:1.25rem; font-weight:700; color:var(--accent-dark);">Ticket de Cita Oficial ✨</h3>
+        <button onclick="studioApp.closeModal('modal-appointment-receipt-view')" style="background:var(--bg-surface-alt); border:1px solid var(--border-subtle); width:34px; height:34px; border-radius:10px; font-size:0.95rem; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center;">✕</button>
+      </div>
+
+      <div id="appointment-receipt-capture-area" class="appointment-receipt-container">
+        <div class="rcp-header">
+          <div id="app-rcp-logo-wrapper"></div>
+          <strong id="app-rcp-studio-name-view" style="color:#A88B63;">LORELYS NAILS</strong>
+          <span style="color:#A88B63;">Boleto de Reserva & Cita</span>
+          <div id="app-rcp-date-view" style="font-size:9.5px; color:#8F7280; margin-top:3px;">-</div>
+        </div>
+        
+        <div class="rcp-divider"></div>
+        <div style="text-align:center;">
+          <span id="app-rcp-status-badge" class="status-badge app-confirmed">CITA RESERVADA</span>
+        </div>
+
+        <div class="rcp-row"><span>CITA ID:</span><strong id="app-rcp-id-view">-</strong></div>
+        <div class="rcp-row"><span>CLIENTA:</span><span id="app-rcp-client-view" style="font-weight:700;">-</span></div>
+        <div class="rcp-row"><span>SERVICIO:</span><span id="app-rcp-service-view" style="font-weight:700; color:var(--primary-dark);">-</span></div>
+        
+        <div class="rcp-divider"></div>
+        <div class="rcp-row" style="font-size:12px; font-weight:800; color:#2E2127; margin:6px 0;">
+          <span>📅 FECHA:</span><span id="app-rcp-dateval-view">-</span>
+        </div>
+        <div class="rcp-row" style="font-size:12px; font-weight:800; color:#A88B63; margin:6px 0;">
+          <span>⏰ HORA:</span><span id="app-rcp-timeval-view">-</span>
+        </div>
+
+        <div class="rcp-divider"></div>
+        <div style="text-align:center; font-size:9.5px; color:#8F7280; font-style:italic;">
+          Te esperamos con mucha ilusión en nuestro estudio. ¡Brillarás hermosa! 💕✨
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+        <button class="btn-action btn-ws" id="btn-send-appointment-ws">
+          <i class="fa-brands fa-whatsapp"></i> Enviar Ticket por WhatsApp
+        </button>
+        <button class="btn-action btn-outline" onclick="studioApp.downloadAppointmentReceiptPNG()">
+          <i class="fa-solid fa-download"></i> Guardar Imagen PNG en Galería
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DEUDA -->
+  <div class="modal-overlay" id="modal-debt-receipt-view">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h3 class="serif-title" id="d-modal-title" style="font-size:1.25rem; font-weight:700; color:var(--danger);">Recordatorio Oficial ✨</h3>
+        <button onclick="studioApp.closeModal('modal-debt-receipt-view')" style="background:var(--bg-surface-alt); border:1px solid var(--border-subtle); width:34px; height:34px; border-radius:10px; font-size:0.95rem; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center;">✕</button>
+      </div>
+
+      <div id="debt-receipt-capture-area" class="debt-receipt-container">
+        <div class="rcp-header">
+          <div id="d-rcp-logo-wrapper"></div>
+          <strong id="d-rcp-studio-name-view">LORELYS NAILS</strong>
+          <span id="d-rcp-subtitle">Estado de Cuenta • Recordatorio</span>
+          <div id="d-rcp-date-view" style="font-size:9.5px; color:#8F7280; margin-top:3px;">-</div>
+        </div>
+        
+        <div class="rcp-divider"></div>
+        <div style="text-align:center;">
+          <span class="status-badge credit" id="d-rcp-status-badge">CUENTA PENDIENTE / FIADO</span>
+        </div>
+
+        <div class="rcp-row"><span>REFERENCIA:</span><strong id="d-rcp-id-view">-</strong></div>
+        <div class="rcp-row"><span>CLIENTA:</span><span id="d-rcp-client-view" style="font-weight:700;">-</span></div>
+        <div class="rcp-row"><span>ATENDIDA POR:</span><span style="font-weight:600; color:var(--primary-dark);">Lorelys</span></div>
+        
+        <div class="rcp-divider"></div>
+        <div class="rcp-row"><span>SERVICIOS:</span><span id="d-rcp-services-view" style="font-weight:700; text-align:right; max-width:180px;">-</span></div>
+        <div class="rcp-row"><span>MONTO TOTAL:</span><span id="d-rcp-total-view">RD$ 0.00</span></div>
+        <div class="rcp-row" style="color:#246B44;"><span id="d-rcp-downpayment-label">ABONO RECIBIDO:</span><span id="d-rcp-downpayment-view">RD$ 0.00</span></div>
+        
+        <div class="rcp-divider"></div>
+        <div class="rcp-row" style="font-weight:800; font-size:14px; color:#B82836; margin-top:4px;" id="d-rcp-pending-row">
+          <span id="d-rcp-pending-label">BALANCE PENDIENTE:</span><span id="d-rcp-pending-view">RD$ 0.00</span>
+        </div>
+        <div class="rcp-row" id="d-rcp-due-date-row" style="color:#8F7280; font-size:10px;">
+          <span>FECHA LÍMITE ACORDADA:</span><span id="d-rcp-due-date-view">-</span>
+        </div>
+
+        <div class="rcp-divider"></div>
+        <div id="d-rcp-footer-note" style="text-align:center; font-size:9.5px; color:#8F7280; font-style:italic;">
+          Agradecemos coordinar tu pago por transferencia o en el studio. ¡Gracias por tu preferencia! 💕✨
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+        <button class="btn-action btn-ws" id="btn-send-debt-ws">
+          <i class="fa-brands fa-whatsapp"></i> Compartir Comprobante a WhatsApp
+        </button>
+        <button class="btn-action btn-outline" onclick="studioApp.downloadDebtReceiptPNG()">
+          <i class="fa-solid fa-download"></i> Guardar Imagen PNG en Galería
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ABONO -->
+  <div class="modal-overlay" id="modal-settle-debt-view">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+        <h3 class="serif-title" style="font-size:1.25rem; font-weight:700; color:var(--navy-light);">Abono o Saldar Cuenta ✨</h3>
+        <button onclick="studioApp.closeModal('modal-settle-debt-view')" style="background:var(--bg-surface-alt); border:1px solid var(--border-subtle); width:34px; height:34px; border-radius:10px; font-size:0.95rem; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center;">✕</button>
+      </div>
+
+      <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.55rem;">Registra un abono parcial o salda la totalidad de la deuda.</p>
+
+      <div class="settle-summary-box">
+        <div class="settle-summary-row">
+          <span style="color:var(--text-muted);">Clienta:</span>
+          <strong id="stl-client-name" style="color:var(--text-main);">-</strong>
+        </div>
+        <div class="settle-summary-row">
+          <span style="color:var(--text-muted);">Referencia:</span>
+          <span id="stl-receipt-id" style="font-weight:700;">-</span>
+        </div>
+        <div class="settle-summary-row">
+          <span style="color:var(--text-muted);">Fecha del Servicio:</span>
+          <span id="stl-service-date">-</span>
+        </div>
+        <div class="settle-summary-row">
+          <span style="color:var(--text-muted);">Servicios Realizados:</span>
+          <strong id="stl-services-list" style="text-align:right; max-width:180px;">-</strong>
+        </div>
+        <div class="settle-summary-row" style="border-top:1px dashed var(--border-subtle); padding-top:0.45rem; margin-top:0.45rem;">
+          <span style="color:var(--text-muted);">Total Original:</span>
+          <span id="stl-total-amount">RD$ 0.00</span>
+        </div>
+        <div class="settle-summary-row">
+          <span style="color:var(--text-muted);">Abonos Acumulados:</span>
+          <span id="stl-downpayment-amount" style="color:var(--success); font-weight:700;">RD$ 0.00</span>
+        </div>
+        <div class="settle-summary-row" style="font-size:0.95rem; font-weight:800; border-top:1px solid var(--border-subtle); padding-top:0.45rem; margin-top:0.45rem; color:var(--danger);">
+          <span>Deuda Actual:</span>
+          <span id="stl-pending-amount">RD$ 0.00</span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group" style="text-align:left;">
+          <label>Monto a Recibir (RD$) *</label>
+          <input type="number" id="stl-received-amount" class="form-control" placeholder="0.00" oninput="studioApp.updateSettlePreview(this.value)">
+        </div>
+        <div class="form-group" style="text-align:left;">
+          <label>Método de Pago</label>
+          <select id="stl-payment-method" class="form-control">
+            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta">Tarjeta de Crédito / Débito</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="stl-new-balance-hint" style="background:var(--bg-surface-alt); border:1px solid var(--border-subtle); padding:0.75rem; border-radius:10px; font-size:0.82rem; color:var(--success); font-weight:700; margin-bottom:0.95rem; text-align:center;">
+        Balance restante después de este abono: <strong id="stl-calc-remaining">RD$ 0.00</strong>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+        <button class="btn-action" style="background:var(--success); color:#FFFFFF;" onclick="studioApp.confirmPaymentOrAbono()">
+          <i class="fa-solid fa-circle-check"></i> Procesar Abono y Generar PNG
+        </button>
+        <button class="btn-action btn-outline" onclick="studioApp.closeModal('modal-settle-debt-view')">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbwHKGENQHfBUZ0YRE4V1CxXswbDwCmRDY-Xp8ajKXCob1Q8kJp9JtrOcnRZhCKNFvwt/exec";
+
+    const formatRD = (num) => 'RD$ ' + (Number(num) || 0).toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    class LorelysNailsApp {
+      constructor() {
+        this.appliedItems = [];
+        this.paymentType = "PAGADO";
+        this.lastGeneratedData = null;
+        this.lastDebtGeneratedData = null;
+        this.lastAppointmentData = null;
+        this.activeSettlingDebt = null;
+        this.currentTab = 'dashboard';
+
+        this.STORAGE_KEY_CLIENTS = "lorelys_nails_clients_db";
+        this.STORAGE_KEY_DEBTS = "lorelys_nails_debts_db";
+        this.STORAGE_KEY_APPOINTMENTS = "lorelys_nails_appointments_db";
+        this.STORAGE_KEY_SERVICES = "lorelys_nails_services_catalog_db";
+        this.STORAGE_KEY_SALES = "lorelys_nails_sales_history_db";
+        this.STORAGE_KEY_CONFIG = "lorelys_nails_config_db";
+        this.STORAGE_KEY_THEME = "lorelys_nails_theme";
+        this.STORAGE_KEY_AUTH = "lorelys_nails_auth";
+        this.STORAGE_KEY_SESSION = "lorelys_nails_session_active";
+
+        this.config = {
+          studioName: "LORELYS NAILS",
+          studioSub: "Studio Luxury Management ✨",
+          studioPhone: "8095550101",
+          studioIg: "@lorelys.nails",
+          studioFooter: "¡Gracias por tu preferencia! Lorelys Nails te espera pronto 💕✨",
+          logoUrl: "https://github.com/Kooflish/Sistema-POS/blob/main/Beltraan.jpg?raw=true"
+        };
+
+        this.credentials = {
+          user: "admin",
+          pass: "lorelys123"
+        };
+
+        this.quickServices = [];
+        this.clients = [];
+        this.debts = [];
+        this.appointments = [];
+        this.salesHistory = [];
+        this.selectedDebtIds = new Set();
+
+        this.init();
+      }
+
+      init() {
+        this.loadTheme();
+        this.loadCredentials();
+        this.checkAuthSession();
+        this.loadLocalConfig();
+        this.loadLocalServices();
+        this.loadLocalClients();
+        this.loadLocalDebts();
+        this.loadLocalAppointments();
+        this.loadLocalSales();
+        this.applyBranding();
+        this.renderQuickChips();
+        this.renderCatalogSelect();
+        this.renderServicesCatalog();
+        this.renderClientsSelect();
+        this.renderAppointmentClientsSelect();
+        this.renderClientsDirectory();
+        this.renderDebtsList();
+        this.renderAppointmentsList();
+        this.updateDashboardStats();
+        this.calculateTotals();
+        this.setDefaultNextDate();
+        this.setDefaultDueDate();
+        this.setDefaultAppDate();
+
+        this.syncFromGoogleSheets();
+      }
+
+      setSyncStatus(status, text) {
+        const dot = document.getElementById('sync-dot-light');
+        const label = document.getElementById('sync-status-text');
+        if (!dot || !label) return;
+
+        if (status === 'synced') {
+          dot.className = 'sync-dot synced';
+          label.innerText = text || 'Sincronizado';
+        } else {
+          dot.className = 'sync-dot waiting';
+          label.innerText = text || 'En espera...';
+        }
+      }
+
+      togglePasswordVisibility() {
+        const passInp = document.getElementById('login-password');
+        const eyeIcon = document.getElementById('eye-icon');
+        if (passInp.type === 'password') {
+          passInp.type = 'text';
+          eyeIcon.className = 'fa-solid fa-eye-slash';
+        } else {
+          passInp.type = 'password';
+          eyeIcon.className = 'fa-solid fa-eye';
+        }
+      }
+
+      async apiCall(action, payload = {}) {
+        if (!API_URL || API_URL === "TU_URL_DE_APPS_SCRIPT_AQUI") return { success: false, offline: true };
+
+        this.setSyncStatus('waiting', 'Sincronizando...');
+
+        try {
+          const bodyData = Object.assign({ action }, payload);
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8',
+            },
+            body: JSON.stringify(bodyData)
+          });
+          
+          const textRes = await res.text();
+          try {
+            const jsonRes = JSON.parse(textRes);
+            this.setSyncStatus('synced', 'Sincronizado');
+            return jsonRes;
+          } catch (parseErr) {
+            console.error("Respuesta no JSON de Apps Script:", textRes);
+            this.setSyncStatus('synced', 'Sincronizado');
+            return { success: false, message: "Error de permisos o sesión en Google Apps Script." };
+          }
+        } catch (err) {
+          console.warn("Conexión con Sheets operando en respaldo local:", err);
+          this.setSyncStatus('synced', 'Sincronizado');
+          return { success: false, offline: true };
+        }
+      }
+
+      async syncFromGoogleSheets() {
+        this.setSyncStatus('waiting', 'Conectando...');
+        const res = await this.apiCall("syncAll");
+        
+        if (res && res.success) {
+          this.setSyncStatus('synced', 'Sincronizado');
+          
+          if (res.data) {
+            const d = res.data;
+            
+            if (Array.isArray(d.clientas) && d.clientas.length > 0) {
+              this.clients = d.clientas.map(c => ({
+                id: c.ID_CLIENTA || c.ID,
+                nombre: c.NOMBRE_COMPLETO || c.NOMBRE,
+                telefono: String(c.TELEFONO),
+                ig: c.INSTAGRAM,
+                notas: c.NOTAS
+              }));
+              this.saveLocalClients();
+              this.renderClientsSelect();
+              this.renderAppointmentClientsSelect();
+              this.renderClientsDirectory();
+            }
+
+            if (Array.isArray(d.servicios) && d.servicios.length > 0) {
+              this.quickServices = d.servicios.filter(s => s.ESTADO !== "INACTIVO").map(s => ({
+                id: s.ID_SERVICIO,
+                nombre: s.NOMBRE_SERVICIO,
+                precio: Number(s.PRECIO_REGULAR) || 0
+              }));
+              this.saveLocalServices();
+              this.renderQuickChips();
+              this.renderCatalogSelect();
+              this.renderServicesCatalog();
+            }
+
+            if (Array.isArray(d.appointments) && d.appointments.length > 0) {
+              this.appointments = d.appointments.filter(a => a.ESTADO !== "CANCELADA").map(a => ({
+                id: a.ID_CITA,
+                clientName: a.NOMBRE_CLIENTA,
+                clientPhone: String(a.TELEFONO),
+                serviceName: a.SERVICIO,
+                date: a.FECHA ? String(a.FECHA).split('T')[0] : '',
+                time: a.HORA || '10:00',
+                status: a.ESTADO || 'PENDIENTE'
+              }));
+              this.saveLocalAppointments();
+              this.renderAppointmentsList();
+            }
+
+            if (Array.isArray(d.debts)) {
+              this.debts = d.debts.filter(x => x.ESTADO !== "SALDADA").map(x => ({
+                id: x.ID_CUENTA || x.ID,
+                receiptId: x.ID_FACTURA || x.COMPROBANTE,
+                clientName: x.NOMBRE_CLIENTA || x.CLIENTA,
+                clientPhone: String(x.TELEFONO),
+                services: x.SERVICIOS || 'Servicio General',
+                totalAmount: Number(x.TOTAL_FACTURA || x.MONTO_TOTAL) || 0,
+                downpayment: Number(x.ABONOS_ACUMULADOS) || 0,
+                pendingBalance: Number(x.BALANCE_PENDIENTE) || 0,
+                date: x.FECHA_CREACION ? String(x.FECHA_CREACION).split('T')[0] : '',
+                dueDate: x.FECHA_LIMITE ? String(x.FECHA_LIMITE).split('T')[0] : ''
+              }));
+              this.saveLocalDebts();
+              this.renderDebtsList();
+            }
+
+            if (d.config && d.config.STUDIO_NAME) {
+              this.config.studioName = d.config.STUDIO_NAME;
+              this.config.studioSub = d.config.STUDIO_SUB || this.config.studioSub;
+              this.config.studioPhone = d.config.STUDIO_PHONE || this.config.studioPhone;
+              this.config.studioIg = d.config.STUDIO_IG || this.config.studioIg;
+              this.config.studioFooter = d.config.STUDIO_FOOTER || this.config.studioFooter;
+              this.config.logoUrl = d.config.LOGO_URL || this.config.logoUrl;
+
+              this.saveLocalConfig();
+              this.applyBranding();
+            }
+          }
+        } else {
+          this.setSyncStatus('synced', 'Sincronizado');
+        }
+      }
+
+      loadCredentials() {
+        try {
+          const savedAuth = localStorage.getItem(this.STORAGE_KEY_AUTH);
+          if (savedAuth) {
+            this.credentials = Object.assign(this.credentials, JSON.parse(savedAuth));
+          }
+        } catch (e) {}
+
+        const userInp = document.getElementById('cfg-auth-user');
+        const passInp = document.getElementById('cfg-auth-pass');
+        if (userInp) userInp.value = this.credentials.user;
+        if (passInp) passInp.value = this.credentials.pass;
+      }
+
+      saveLocalAuth() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_AUTH, JSON.stringify(this.credentials));
+        } catch (e) {}
+      }
+
+      checkAuthSession() {
+        const isLogged = sessionStorage.getItem(this.STORAGE_KEY_SESSION);
+        const authScreen = document.getElementById('auth-screen');
+        const appViewport = document.getElementById('app-main-viewport');
+
+        if (isLogged === "true") {
+          authScreen.style.display = "none";
+          appViewport.style.display = "flex";
+        } else {
+          authScreen.style.display = "flex";
+          appViewport.style.display = "none";
+        }
+      }
+
+      handleLogin() {
+        const userInput = document.getElementById('login-username').value.trim();
+        const passInput = document.getElementById('login-password').value.trim();
+        const cardContainer = document.getElementById('login-card-container');
+        const userInpField = document.getElementById('login-username');
+        const passInpField = document.getElementById('login-password');
+
+        if (userInput.toLowerCase() === this.credentials.user.toLowerCase() && passInput === this.credentials.pass) {
+          sessionStorage.setItem(this.STORAGE_KEY_SESSION, "true");
+          this.checkAuthSession();
+          this.showToast('✨ Bienvenida a Lorelys Nails');
+          passInpField.value = '';
+          userInpField.classList.remove('input-error');
+          passInpField.classList.remove('input-error');
+        } else {
+          cardContainer.classList.add('shake');
+          userInpField.classList.add('input-error');
+          passInpField.classList.add('input-error');
+          
+          this.showToast('⚠️ Usuario o contraseña incorrectos');
+          
+          setTimeout(() => {
+            cardContainer.classList.remove('shake');
+          }, 400);
+        }
+      }
+
+      logout() {
+        if (!confirm('¿Deseas cerrar la sesión administrativa?')) return;
+        sessionStorage.removeItem(this.STORAGE_KEY_SESSION);
+        this.checkAuthSession();
+        this.showToast('Sesión cerrada');
+      }
+
+      async updateCredentials() {
+        const newUser = document.getElementById('cfg-auth-user').value.trim();
+        const newPass = document.getElementById('cfg-auth-pass').value.trim();
+
+        if (!newUser || !newPass) {
+          this.showToast('Completa usuario y contraseña');
+          return;
+        }
+
+        this.credentials.user = newUser;
+        this.credentials.pass = newPass;
+
+        this.saveLocalAuth();
+        this.apiCall("guardarConfig", { config: this.config, credentials: this.credentials });
+        this.showToast('✓ Credenciales sincronizadas exitosamente');
+      }
+
+      loadTheme() {
+        const savedTheme = localStorage.getItem(this.STORAGE_KEY_THEME) || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        this.updateThemeIcon(savedTheme);
+      }
+
+      toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem(this.STORAGE_KEY_THEME, next);
+        this.updateThemeIcon(next);
+        this.showToast(next === 'dark' ? 'Modo Oscuro Activado' : 'Modo Claro Activado');
+      }
+
+      updateThemeIcon(theme) {
+        const icon = document.getElementById('theme-icon');
+        if (icon) {
+          icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+      }
+
+      loadLocalConfig() {
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY_CONFIG);
+          if (saved) {
+            this.config = Object.assign(this.config, JSON.parse(saved));
+          }
+        } catch (e) {}
+
+        document.getElementById('cfg-logo-url').value = this.config.logoUrl || '';
+        document.getElementById('cfg-studio-name').value = this.config.studioName;
+        document.getElementById('cfg-studio-sub').value = this.config.studioSub;
+        document.getElementById('cfg-studio-phone').value = this.config.studioPhone;
+        document.getElementById('cfg-studio-ig').value = this.config.studioIg;
+        document.getElementById('cfg-studio-footer').value = this.config.studioFooter;
+      }
+
+      saveLocalConfig() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_CONFIG, JSON.stringify(this.config));
+        } catch (e) {}
+      }
+
+      async saveStudioConfig() {
+        this.config.logoUrl = document.getElementById('cfg-logo-url').value.trim();
+        this.config.studioName = document.getElementById('cfg-studio-name').value.trim() || "LORELYS NAILS";
+        this.config.studioSub = document.getElementById('cfg-studio-sub').value.trim() || "Studio Luxury Management ✨";
+        this.config.studioPhone = document.getElementById('cfg-studio-phone').value.trim();
+        this.config.studioIg = document.getElementById('cfg-studio-ig').value.trim();
+        this.config.studioFooter = document.getElementById('cfg-studio-footer').value.trim() || "¡Gracias por tu preferencia! Lorelys Nails te espera pronto 💕✨";
+
+        this.saveLocalConfig();
+        this.applyBranding();
+        this.showToast('✓ Ajustes guardados correctamente');
+        this.switchTab('dashboard');
+
+        await this.apiCall("guardarConfig", { config: this.config, credentials: this.credentials });
+      }
+
+      applyBranding() {
+        document.getElementById('header-brand-title').innerText = this.config.studioName;
+        document.getElementById('header-brand-sub').innerText = this.config.studioSub;
+
+        const logoBox = document.getElementById('brand-logo-container');
+        const loginLogoBox = document.getElementById('login-logo-container');
+
+        if (this.config.logoUrl) {
+          const imgTag = `<img src="${this.config.logoUrl}" crossorigin="anonymous" alt="Logo">`;
+          logoBox.innerHTML = imgTag;
+          if (loginLogoBox) loginLogoBox.innerHTML = imgTag;
+        } else {
+          logoBox.innerHTML = `<i class="fa-solid fa-gem"></i>`;
+          if (loginLogoBox) loginLogoBox.innerHTML = `<i class="fa-solid fa-gem"></i>`;
+        }
+      }
+
+      showToast(msg) {
+        const c = document.getElementById('toast-container');
+        const t = document.createElement('div');
+        t.className = 'toast';
+        t.innerHTML = `<i class="fa-solid fa-circle-check" style="color:var(--success);"></i> <span>${msg}</span>`;
+        c.appendChild(t);
+        setTimeout(() => t.remove(), 3200);
+      }
+
+      switchTab(tab) {
+        this.currentTab = tab;
+        const btnDash = document.getElementById('tab-nav-dashboard');
+        const btnBill = document.getElementById('tab-nav-billing');
+        const btnCat = document.getElementById('tab-nav-catalog');
+        const btnApp = document.getElementById('tab-nav-appointments');
+        const btnCli = document.getElementById('tab-nav-clients');
+        const btnDebts = document.getElementById('tab-nav-debts');
+
+        const viewDash = document.getElementById('view-dashboard');
+        const viewBill = document.getElementById('view-billing');
+        const viewCat = document.getElementById('view-catalog');
+        const viewApp = document.getElementById('view-appointments');
+        const viewCli = document.getElementById('view-clients');
+        const viewDebts = document.getElementById('view-debts');
+        const viewCfg = document.getElementById('view-config');
+
+        const bottomBarBill = document.getElementById('app-bottom-bar');
+        const bottomBarDebts = document.getElementById('debts-bottom-bar');
+
+        btnDash.classList.toggle('active', tab === 'dashboard');
+        btnBill.classList.toggle('active', tab === 'billing');
+        if(btnCat) btnCat.classList.toggle('active', tab === 'catalog');
+        btnApp.classList.toggle('active', tab === 'appointments');
+        btnCli.classList.toggle('active', tab === 'clients');
+        btnDebts.classList.toggle('active', tab === 'debts');
+
+        viewDash.style.display = tab === 'dashboard' ? 'block' : 'none';
+        viewBill.style.display = tab === 'billing' ? 'block' : 'none';
+        if(viewCat) viewCat.style.display = tab === 'catalog' ? 'block' : 'none';
+        viewApp.style.display = tab === 'appointments' ? 'block' : 'none';
+        viewCli.style.display = tab === 'clients' ? 'block' : 'none';
+        viewDebts.style.display = tab === 'debts' ? 'block' : 'none';
+        viewCfg.style.display = tab === 'config' ? 'block' : 'none';
+
+        bottomBarBill.style.display = tab === 'billing' ? 'flex' : 'none';
+        bottomBarDebts.style.display = tab === 'debts' ? 'flex' : 'none';
+
+        if (tab === 'dashboard') this.updateDashboardStats();
+        if (tab === 'catalog') this.renderServicesCatalog();
+        if (tab === 'appointments') this.renderAppointmentsList();
+        if (tab === 'clients') this.renderClientsDirectory();
+        if (tab === 'debts') this.renderDebtsList();
+      }
+
+      loadLocalServices() {
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY_SERVICES);
+          this.quickServices = saved ? JSON.parse(saved) : [
+            { id: "SRV-01", nombre: "Acrílicas Full Set", precio: 2000 },
+            { id: "SRV-02", nombre: "Soft Gel Extensions", precio: 1800 },
+            { id: "SRV-03", nombre: "Retoque Acrílico", precio: 1300 },
+            { id: "SRV-04", nombre: "Manicure Ruso con Gel", precio: 900 },
+            { id: "SRV-05", nombre: "Pedicure Jelly Spa", precio: 1200 },
+            { id: "SRV-06", nombre: "Nail Art Glazed Chrome", precio: 450 },
+            { id: "SRV-07", nombre: "Nail Art Luxury 3D", precio: 800 },
+            { id: "SRV-08", nombre: "Retiro de Sistema", precio: 400 }
+          ];
+        } catch (e) {
+          this.quickServices = [];
+        }
+      }
+
+      saveLocalServices() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_SERVICES, JSON.stringify(this.quickServices));
+        } catch (e) {}
+      }
+
+      renderCatalogSelect() {
+        const select = document.getElementById('select-catalog-service');
+        if (!select) return;
+        select.innerHTML = `<option value="">-- Seleccionar servicio del catálogo --</option>` +
+          this.quickServices.map(s => `
+            <option value="${s.id}">${s.nombre} (${formatRD(s.precio)})</option>
+          `).join('');
+      }
+
+      handleCatalogDropdownSelect(srvId) {
+        if (!srvId) return;
+        this.addPredefinedServiceItem(srvId);
+        document.getElementById('select-catalog-service').value = "";
+      }
+
+      editService(srvId) {
+        const s = this.quickServices.find(x => x.id === srvId);
+        if (!s) return;
+
+        document.getElementById('srv-edit-id').value = s.id;
+        document.getElementById('srv-name').value = s.nombre;
+        document.getElementById('srv-price').value = s.precio;
+
+        document.getElementById('service-form-title').innerText = "Editar Servicio";
+        document.getElementById('btn-cancel-edit-service').style.display = 'block';
+        document.getElementById('btn-service-submit').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Actualizar Servicio';
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.showToast(`Editando servicio: ${s.nombre}`);
+      }
+
+      resetServiceForm() {
+        document.getElementById('srv-edit-id').value = '';
+        document.getElementById('srv-name').value = '';
+        document.getElementById('srv-price').value = '';
+
+        document.getElementById('service-form-title').innerText = "Crear Nuevo Servicio";
+        document.getElementById('btn-cancel-edit-service').style.display = 'none';
+        document.getElementById('btn-service-submit').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar en Catálogo';
+      }
+
+      async saveServiceFromForm() {
+        const editId = document.getElementById('srv-edit-id').value;
+        const nombre = document.getElementById('srv-name').value.trim();
+        const precio = Number(document.getElementById('srv-price').value);
+
+        if (!nombre || precio <= 0) {
+          this.showToast('Indica nombre y precio válido');
+          return;
+        }
+
+        let srvObj;
+        if (editId) {
+          const idx = this.quickServices.findIndex(s => s.id === editId);
+          if (idx >= 0) {
+            this.quickServices[idx] = { id: editId, nombre, precio };
+            srvObj = this.quickServices[idx];
+          }
+          this.showToast('✓ Servicio actualizado');
+        } else {
+          srvObj = {
+            id: 'SRV-' + Date.now().toString().slice(-4),
+            nombre,
+            precio
+          };
+          this.quickServices.push(srvObj);
+          this.showToast('✓ Servicio añadido al catálogo');
+        }
+
+        this.saveLocalServices();
+        this.renderServicesCatalog();
+        this.renderQuickChips();
+        this.renderCatalogSelect();
+        this.resetServiceForm();
+
+        await this.apiCall("guardarServicio", { servicio: srvObj });
+      }
+
+      async deleteService(srvId) {
+        if (!confirm('¿Deseas eliminar este servicio del catálogo?')) return;
+        this.quickServices = this.quickServices.filter(s => s.id !== srvId);
+        this.saveLocalServices();
+        this.renderServicesCatalog();
+        this.renderQuickChips();
+        this.renderCatalogSelect();
+        this.showToast('Servicio eliminado');
+
+        await this.apiCall("eliminarServicio", { serviceId: srvId });
+      }
+
+      renderServicesCatalog() {
+        const container = document.getElementById('services-items-container');
+        const badgeCount = document.getElementById('srv-count-badge');
+        badgeCount.innerText = `${this.quickServices.length} servicios`;
+
+        if (this.quickServices.length === 0) {
+          container.innerHTML = `<div style="text-align:center; padding:1.8rem 1rem; color:var(--text-muted); font-size:0.85rem;">No hay servicios en el catálogo</div>`;
+          return;
+        }
+
+        container.innerHTML = this.quickServices.map(s => `
+          <div class="client-card-item">
+            <div class="client-avatar service"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="client-info-meta">
+              <strong>${s.nombre}</strong>
+              <span style="font-weight:700; color:var(--primary); font-size:0.85rem;">${formatRD(s.precio)}</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.35rem;">
+              <button class="btn-edit-client" onclick="studioApp.editService('${s.id}')" title="Editar Servicio"><i class="fa-solid fa-pen"></i></button>
+              <button class="btn-del-client" onclick="studioApp.deleteService('${s.id}')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      loadLocalClients() {
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY_CLIENTS);
+          this.clients = saved ? JSON.parse(saved) : [
+            { id: "CLI-01", nombre: "María Rodríguez", telefono: "8095550101", ig: "@maria.rd", notas: "Forma Almond - Tonos Nude" },
+            { id: "CLI-02", nombre: "Gabriela Pérez", telefono: "8095552233", ig: "@gaby.p", notas: "Soft Gel - Glazed Chrome" }
+          ];
+        } catch (e) {
+          this.clients = [];
+        }
+      }
+
+      saveLocalClients() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_CLIENTS, JSON.stringify(this.clients));
+        } catch (e) {}
+      }
+
+      loadLocalDebts() {
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY_DEBTS);
+          this.debts = saved ? JSON.parse(saved) : [
+            { id: "DEBT-101", receiptId: "LOR-2026-1044", clientName: "Laura Santana", clientPhone: "8095557788", services: "Acrílicas Full Set + 3D", totalAmount: 2800, downpayment: 1000, pendingBalance: 1800, date: "2026-08-14", dueDate: "2026-08-21" },
+            { id: "DEBT-102", receiptId: "LOR-2026-1089", clientName: "Carolina Martínez", clientPhone: "8095559900", services: "Soft Gel Extensions", totalAmount: 1800, downpayment: 0, pendingBalance: 1800, date: "2026-08-18", dueDate: "2026-08-25" }
+          ];
+        } catch (e) {
+          this.debts = [];
+        }
+      }
+
+      saveLocalDebts() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_DEBTS, JSON.stringify(this.debts));
+        } catch (e) {}
+      }
+
+      loadLocalAppointments() {
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY_APPOINTMENTS);
+          const todayStr = new Date().toISOString().split('T')[0];
+          this.appointments = saved ? JSON.parse(saved) : [
+            { id: "APP-01", clientName: "Carla Méndez", clientPhone: "8095553344", serviceName: "Acrílicas Full Set", date: todayStr, time: "10:30", status: "CONFIRMADA" },
+            { id: "APP-02", clientName: "Sofía Gómez", clientPhone: "8095556677", serviceName: "Soft Gel Extensions", date: todayStr, time: "14:00", status: "PENDIENTE" }
+          ];
+        } catch (e) {
+          this.appointments = [];
+        }
+      }
+
+      saveLocalAppointments() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_APPOINTMENTS, JSON.stringify(this.appointments));
+        } catch (e) {}
+      }
+
+      loadLocalSales() {
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY_SALES);
+          const todayStr = new Date().toISOString().split('T')[0];
+          this.salesHistory = saved ? JSON.parse(saved) : [
+            { id: "SALE-01", date: todayStr, total: 2000, paymentType: "PAGADO" }
+          ];
+        } catch (e) {
+          this.salesHistory = [];
+        }
+      }
+
+      saveLocalSales() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY_SALES, JSON.stringify(this.salesHistory));
+        } catch (e) {}
+      }
+
+      updateDashboardStats() {
+        const todayStr = new Date().toISOString().split('T')[0];
+        
+        const salesToday = this.salesHistory
+          .filter(s => s.date === todayStr && s.paymentType === "PAGADO")
+          .reduce((acc, s) => acc + s.total, 0);
+
+        document.getElementById('dash-sales-today').innerText = formatRD(salesToday);
+
+        const appsToday = this.appointments.filter(a => a.date === todayStr).length;
+        document.getElementById('dash-app-today').innerText = `${appsToday} citas`;
+
+        const totalDebts = this.debts.reduce((acc, d) => acc + d.pendingBalance, 0);
+        document.getElementById('dash-debts-total').innerText = formatRD(totalDebts);
+
+        document.getElementById('dash-clients-total').innerText = `${this.clients.length} reg.`;
+      }
+
+      setDefaultAppDate() {
+        const d = new Date();
+        document.getElementById('app-date').value = d.toISOString().split('T')[0];
+      }
+
+      renderAppointmentClientsSelect() {
+        const select = document.getElementById('app-select-client');
+        select.innerHTML = `<option value="">-- Seleccionar de la lista o escribir abajo --</option>` +
+          this.clients.map(c => `
+            <option value="${c.id}">${c.nombre} (${c.telefono})</option>
+          `).join('');
+      }
+
+      handleAppClientSelect(clientId) {
+        if (!clientId) return;
+        const client = this.clients.find(c => c.id === clientId);
+        if (client) {
+          document.getElementById('app-client-name').value = client.nombre;
+          document.getElementById('app-client-phone').value = client.telefono;
+          this.showToast(`✓ Datos de ${client.nombre} cargados`);
+        }
+      }
+
+      editAppointment(appId) {
+        const a = this.appointments.find(x => x.id === appId);
+        if (!a) return;
+
+        document.getElementById('app-edit-id').value = a.id;
+        document.getElementById('app-select-client').value = "";
+        document.getElementById('app-client-name').value = a.clientName;
+        document.getElementById('app-client-phone').value = a.clientPhone;
+        document.getElementById('app-service-name').value = a.serviceName;
+        document.getElementById('app-date').value = a.date;
+        document.getElementById('app-time').value = a.time;
+        document.getElementById('app-status').value = a.status;
+
+        document.getElementById('app-form-title').innerText = "Editar Cita";
+        document.getElementById('btn-cancel-edit-app').style.display = 'block';
+        document.getElementById('btn-app-submit').innerHTML = '<i class="fa-solid fa-calendar-check"></i> Actualizar Cita';
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.showToast(`Editando cita de ${a.clientName}`);
+      }
+
+      resetAppointmentForm() {
+        document.getElementById('app-edit-id').value = '';
+        document.getElementById('app-select-client').value = '';
+        document.getElementById('app-client-name').value = '';
+        document.getElementById('app-client-phone').value = '';
+        document.getElementById('app-service-name').value = '';
+        this.setDefaultAppDate();
+        document.getElementById('app-time').value = '10:00';
+        document.getElementById('app-status').value = 'PENDIENTE';
+
+        document.getElementById('app-form-title').innerText = "Programar Nueva Cita";
+        document.getElementById('btn-cancel-edit-app').style.display = 'none';
+        document.getElementById('btn-app-submit').innerHTML = '<i class="fa-solid fa-calendar-check"></i> Guardar Cita en Agenda';
+      }
+
+      async saveAppointmentFromForm() {
+        const editId = document.getElementById('app-edit-id').value;
+        const clientName = document.getElementById('app-client-name').value.trim();
+        const clientPhone = document.getElementById('app-client-phone').value.trim().replace(/\D/g, '');
+        const serviceName = document.getElementById('app-service-name').value.trim();
+        const date = document.getElementById('app-date').value;
+        const time = document.getElementById('app-time').value;
+        const status = document.getElementById('app-status').value;
+
+        if (!clientName || !clientPhone || !serviceName || !date) {
+          this.showToast('Completa los campos obligatorios');
+          return;
+        }
+
+        let appObj;
+        if (editId) {
+          const idx = this.appointments.findIndex(a => a.id === editId);
+          if (idx >= 0) {
+            this.appointments[idx] = { id: editId, clientName, clientPhone, serviceName, date, time, status };
+            appObj = this.appointments[idx];
+          }
+          this.showToast('✓ Cita actualizada');
+        } else {
+          appObj = {
+            id: 'APP-' + Date.now().toString().slice(-4),
+            clientName,
+            clientPhone,
+            serviceName,
+            date,
+            time,
+            status
+          };
+          this.appointments.unshift(appObj);
+          this.showToast('✓ Cita programada con éxito');
+        }
+
+        this.saveLocalAppointments();
+        this.renderAppointmentsList();
+        this.resetAppointmentForm();
+        this.openAppointmentReceiptPreview(appObj.id);
+
+        await this.apiCall("guardarCita", { cita: appObj });
+      }
+
+      openAppointmentReceiptPreview(appId) {
+        const a = this.appointments.find(x => x.id === appId);
+        if (!a) return;
+
+        this.lastAppointmentData = a;
+
+        const logoWrapper = document.getElementById('app-rcp-logo-wrapper');
+        if (this.config.logoUrl) {
+          logoWrapper.innerHTML = `<img src="${this.config.logoUrl}" class="rcp-logo-img" crossorigin="anonymous" alt="Logo">`;
+        } else {
+          logoWrapper.innerHTML = '';
+        }
+
+        document.getElementById('app-rcp-studio-name-view').innerText = this.config.studioName;
+        document.getElementById('app-rcp-date-view').innerText = new Date().toLocaleString('es-DO', { dateStyle: 'medium', timeStyle: 'short' });
+        document.getElementById('app-rcp-id-view').innerText = '#' + a.id;
+        document.getElementById('app-rcp-client-view').innerText = a.clientName;
+        document.getElementById('app-rcp-service-view').innerText = a.serviceName;
+        document.getElementById('app-rcp-dateval-view').innerText = a.date;
+        document.getElementById('app-rcp-timeval-view').innerText = a.time;
+
+        const badge = document.getElementById('app-rcp-status-badge');
+        badge.className = "status-badge " + (a.status === "CONFIRMADA" ? "app-confirmed" : "app-pending");
+        badge.innerText = `CITA ${a.status}`;
+
+        document.getElementById('modal-appointment-receipt-view').style.display = 'flex';
+        document.getElementById('btn-send-appointment-ws').onclick = () => this.sendAppointmentWhatsAppWithImage();
+      }
+
+      async sendAppointmentWhatsAppWithImage() {
+        const a = this.lastAppointmentData;
+        if (!a) return;
+
+        const target = document.getElementById('appointment-receipt-capture-area');
+        let canvas = null;
+
+        try {
+          canvas = await html2canvas(target, { scale: 2.2, backgroundColor: '#ffffff', useCORS: true });
+        } catch (e) {
+          console.warn("Fallo en captura:", e);
+        }
+
+        const message = `🌸✨ *${this.config.studioName}* ✨🌸\n` +
+          `───────────────────────\n` +
+          `¡Hola *${a.clientName}*! 💕 Nos alegra mucho saludarte y confirmar los detalles de tu próxima cita:\n\n` +
+          `💅 *Servicio:* ${a.serviceName}\n` +
+          `📅 *Fecha:* ${a.date}\n` +
+          `⏰ *Hora:* ${a.time}\n` +
+          `✨ *Estado:* *${a.status}*\n\n` +
+          `───────────────────────\n` +
+          `📍 *Recomendación:* Te pedimos llegar con 5 minutos de anticipación.\n\n` +
+          `¡Gracias por confiar en nosotras para consentir tus manos! Con cariño, Lorelys 💕`;
+
+        if (canvas && navigator.canShare) {
+          canvas.toBlob(async (blob) => {
+            const file = new File([blob], `BoletoCita_${a.clientName.replace(/\s+/g, '_')}.png`, { type: 'image/png' });
+            if (navigator.canShare({ files: [file] })) {
+              try {
+                await navigator.share({
+                  files: [file],
+                  title: `Cita ${this.config.studioName}`,
+                  text: message
+                });
+                this.closeModal('modal-appointment-receipt-view');
+                return;
+              } catch (err) {}
+            }
+            this.fallbackSendAppointment(canvas, a.clientPhone, message, a.id);
+          });
+          return;
+        }
+
+        this.fallbackSendAppointment(canvas, a.clientPhone, message, a.id);
+      }
+
+      fallbackSendAppointment(canvas, phone, message, appId) {
+        if (canvas) {
+          const a = document.createElement('a');
+          a.download = `BoletoCita_${appId}.png`;
+          a.href = canvas.toDataURL('image/png');
+          a.click();
+        }
+
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+        this.closeModal('modal-appointment-receipt-view');
+      }
+
+      async downloadAppointmentReceiptPNG() {
+        const a = this.lastAppointmentData;
+        if (!a) return;
+        const target = document.getElementById('appointment-receipt-capture-area');
+        const canvas = await html2canvas(target, { scale: 2.2, useCORS: true });
+        const link = document.createElement('a');
+        link.download = `BoletoCita_${a.id}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }
+
+      renderAppointmentsList(filterQuery = '') {
+        const container = document.getElementById('appointments-items-container');
+        const badgeCount = document.getElementById('app-count-badge');
+        badgeCount.innerText = `${this.appointments.length} programadas`;
+
+        const filtered = this.appointments.filter(a =>
+          !filterQuery ||
+          a.clientName.toLowerCase().includes(filterQuery.toLowerCase()) ||
+          a.serviceName.toLowerCase().includes(filterQuery.toLowerCase()) ||
+          a.date.includes(filterQuery)
+        );
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<div style="text-align:center; padding:1.8rem 1rem; color:var(--text-muted); font-size:0.85rem;">No hay citas encontradas</div>`;
+          return;
+        }
+
+        container.innerHTML = filtered.map(a => {
+          let badgeClass = "status-badge app-pending";
+          if (a.status === "CONFIRMADA") badgeClass = "status-badge app-confirmed";
+          if (a.status === "COMPLETADA") badgeClass = "status-badge app-completed";
+          if (a.status === "CANCELADA") badgeClass = "status-badge credit";
+
+          return `
+            <div class="client-card-item">
+              <div class="client-avatar appointment"><i class="fa-solid fa-calendar-day"></i></div>
+              <div class="client-info-meta">
+                <strong>${a.clientName}</strong>
+                <span style="font-weight:700; color:var(--primary);">${a.serviceName}</span>
+                <span><i class="fa-regular fa-clock"></i> ${a.date} • ${a.time}</span>
+                <span style="margin-top:3px;"><span class="${badgeClass}">${a.status}</span></span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.35rem;">
+                <button class="btn-use-client" style="background:#22C55E; color:#FFFFFF; border-color:#22C55E;" onclick="studioApp.openAppointmentReceiptPreview('${a.id}')" title="Notificar por WhatsApp">
+                  <i class="fa-brands fa-whatsapp"></i> Avisar
+                </button>
+                <button class="btn-edit-client" onclick="studioApp.editAppointment('${a.id}')" title="Editar Cita"><i class="fa-solid fa-pen"></i></button>
+                <button class="btn-del-client" onclick="studioApp.deleteAppointment('${a.id}')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      filterAppointments(query) {
+        this.renderAppointmentsList(query.trim());
+      }
+
+      async deleteAppointment(appId) {
+        if (!confirm('¿Deseas eliminar este registro de cita?')) return;
+        this.appointments = this.appointments.filter(a => a.id !== appId);
+        this.saveLocalAppointments();
+        this.renderAppointmentsList();
+        this.showToast('Cita eliminada');
+
+        await this.apiCall("eliminarCita", { appId });
+      }
+
+      renderClientsSelect() {
+        const select = document.getElementById('select-registered-client');
+        select.innerHTML = `<option value="">-- Seleccionar de la lista o escribir abajo --</option>` +
+          this.clients.map(c => `
+            <option value="${c.id}">${c.nombre} (${c.telefono})</option>
+          `).join('');
+      }
+
+      handleClientSelect(clientId) {
+        const badge = document.getElementById('saved-client-badge');
+        if (!clientId) {
+          badge.style.display = 'none';
+          return;
+        }
+
+        const client = this.clients.find(c => c.id === clientId);
+        if (client) {
+          document.getElementById('cli-name').value = client.nombre;
+          document.getElementById('cli-phone').value = client.telefono;
+          document.getElementById('cli-ig').value = client.ig || '';
+          badge.style.display = 'inline-block';
+          this.showToast(`✓ Datos de ${client.nombre} cargados`);
+        }
+      }
+
+      editClient(clientId) {
+        const c = this.clients.find(x => x.id === clientId);
+        if (!c) return;
+
+        document.getElementById('dir-edit-id').value = c.id;
+        document.getElementById('dir-name').value = c.nombre;
+        document.getElementById('dir-phone').value = c.telefono;
+        document.getElementById('dir-ig').value = c.ig || '';
+        document.getElementById('dir-notes').value = c.notas || '';
+
+        document.getElementById('client-form-title').innerText = "Editar Clienta";
+        document.getElementById('btn-cancel-edit-client').style.display = 'block';
+        document.getElementById('btn-client-submit').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Actualizar Datos';
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.showToast(`Editando a ${c.nombre}`);
+      }
+
+      resetClientForm() {
+        document.getElementById('dir-edit-id').value = '';
+        document.getElementById('dir-name').value = '';
+        document.getElementById('dir-phone').value = '';
+        document.getElementById('dir-ig').value = '';
+        document.getElementById('dir-notes').value = '';
+
+        document.getElementById('client-form-title').innerText = "Registrar Nueva Clienta";
+        document.getElementById('btn-cancel-edit-client').style.display = 'none';
+        document.getElementById('btn-client-submit').innerHTML = '<i class="fa-solid fa-floppy-disk"></i> Guardar en Directorio';
+      }
+
+      async saveClientFromForm() {
+        const editId = document.getElementById('dir-edit-id').value;
+        const nombre = document.getElementById('dir-name').value.trim();
+        const telefono = document.getElementById('dir-phone').value.trim().replace(/\D/g, '');
+        const ig = document.getElementById('dir-ig').value.trim();
+        const notas = document.getElementById('dir-notes').value.trim();
+
+        if (!nombre || !telefono) {
+          this.showToast('Completa el nombre y teléfono');
+          return;
+        }
+
+        let clientObj;
+        if (editId) {
+          const idx = this.clients.findIndex(c => c.id === editId);
+          if (idx >= 0) {
+            this.clients[idx] = { id: editId, nombre, telefono, ig, notas };
+            clientObj = this.clients[idx];
+          }
+          this.showToast('✓ Registro actualizado');
+        } else {
+          const existingIdx = this.clients.findIndex(c => c.telefono === telefono);
+          clientObj = { id: 'CLI-' + Date.now().toString().slice(-4), nombre, telefono, ig, notas };
+          if (existingIdx >= 0) {
+            clientObj.id = this.clients[existingIdx].id;
+            this.clients[existingIdx] = clientObj;
+            this.showToast('✓ Clienta existente actualizada');
+          } else {
+            this.clients.unshift(clientObj);
+            this.showToast(`✓ ${nombre} guardada en directorio`);
+          }
+        }
+
+        this.saveLocalClients();
+        this.renderClientsSelect();
+        this.renderAppointmentClientsSelect();
+        this.renderClientsDirectory();
+        this.resetClientForm();
+
+        await this.apiCall("guardarClienta", { clienta: clientObj });
+      }
+
+      renderClientsDirectory(filterQuery = '') {
+        const container = document.getElementById('directory-items-container');
+        const badgeCount = document.getElementById('dir-count-badge');
+        badgeCount.innerText = `${this.clients.length} guardadas`;
+
+        const filtered = this.clients.filter(c => 
+          !filterQuery || 
+          c.nombre.toLowerCase().includes(filterQuery.toLowerCase()) || 
+          c.telefono.includes(filterQuery) ||
+          (c.ig && c.ig.toLowerCase().includes(filterQuery.toLowerCase()))
+        );
+
+        if (filtered.length === 0) {
+          container.innerHTML = `<div style="text-align:center; padding:1.8rem 1rem; color:var(--text-muted); font-size:0.85rem;">No hay clientas encontradas</div>`;
+          return;
+        }
+
+        container.innerHTML = filtered.map(c => `
+          <div class="client-card-item">
+            <div class="client-avatar">${c.nombre.charAt(0).toUpperCase()}</div>
+            <div class="client-info-meta">
+              <strong>${c.nombre}</strong>
+              <span><i class="fa-brands fa-whatsapp" style="color:var(--success);"></i> ${c.telefono} ${c.ig ? '• ' + c.ig : ''}</span>
+              ${c.notas ? `<span style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">${c.notas}</span>` : ''}
+            </div>
+            <div style="display:flex; align-items:center; gap:0.35rem;">
+              <button class="btn-use-client" onclick="studioApp.useClientInBilling('${c.id}')" title="Usar en Facturación">
+                <i class="fa-solid fa-receipt"></i> Cobrar
+              </button>
+              <button class="btn-edit-client" onclick="studioApp.editClient('${c.id}')" title="Editar Clienta"><i class="fa-solid fa-pen"></i></button>
+              <button class="btn-del-client" onclick="studioApp.deleteClient('${c.id}')" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      filterClientsDirectory(query) {
+        this.renderClientsDirectory(query.trim());
+      }
+
+      useClientInBilling(clientId) {
+        this.switchTab('billing');
+        document.getElementById('select-registered-client').value = clientId;
+        this.handleClientSelect(clientId);
+      }
+
+      async deleteClient(clientId) {
+        if (!confirm('¿Deseas eliminar esta clienta del directorio?')) return;
+        this.clients = this.clients.filter(c => c.id !== clientId);
+        this.saveLocalClients();
+        this.renderClientsSelect();
+        this.renderAppointmentClientsSelect();
+        this.renderClientsDirectory();
+        this.showToast('Clienta eliminada');
+
+        await this.apiCall("eliminarClienta", { clientId });
+      }
+
+      renderDebtsList() {
+        const container = document.getElementById('debts-items-container');
+        const badgeCount = document.getElementById('debts-count-badge');
+        const totalSumEl = document.getElementById('debts-total-sum');
+
+        const totalSum = this.debts.reduce((acc, d) => acc + d.pendingBalance, 0);
+        badgeCount.innerText = `${this.debts.length} pendientes`;
+        totalSumEl.innerText = formatRD(totalSum);
+
+        if (this.debts.length === 0) {
+          container.innerHTML = `<div style="text-align:center; padding:2.5rem 1rem; color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-heart-circle-check" style="font-size:2.4rem; color:var(--success); margin-bottom:0.8rem;"></i><br>¡Excelente! No tienes cuentas por cobrar pendientes.</div>`;
+          this.updateSelectedDebtsBar();
+          return;
+        }
+
+        container.innerHTML = this.debts.map(d => {
+          const isSelected = this.selectedDebtIds.has(d.id);
+          return `
+            <div class="client-card-item ${isSelected ? 'selected-debt' : ''}">
+              <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="studioApp.toggleDebtSelection('${d.id}')" style="width:16px; height:16px; accent-color:var(--primary); cursor:pointer;">
+              <div class="client-avatar debt">RD$</div>
+              <div class="client-info-meta">
+                <strong>${d.clientName}</strong>
+                <span style="color:var(--danger); font-weight:800; font-size:0.82rem;">Debe: ${formatRD(d.pendingBalance)}</span>
+                <span style="font-size:0.74rem; color:var(--text-muted);">${d.services} ${d.dueDate ? '• Límite: ' + d.dueDate : ''}</span>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:0.35rem; min-width:88px;">
+                <button class="btn-use-client" style="background:#22C55E; color:#FFFFFF; border-color:#22C55E; min-height:32px; padding:0.3rem 0.6rem; justify-content:center;" onclick="studioApp.openDebtReceiptPreview('${d.id}', false)">
+                  <i class="fa-solid fa-file-image"></i> Recordar
+                </button>
+                <button class="btn-settle-card" onclick="studioApp.openSettleDebtModal('${d.id}')">
+                  <i class="fa-solid fa-hand-holding-dollar"></i> Abonar
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        this.updateSelectedDebtsBar();
+      }
+
+      toggleDebtSelection(id) {
+        if (this.selectedDebtIds.has(id)) {
+          this.selectedDebtIds.delete(id);
+        } else {
+          this.selectedDebtIds.add(id);
+        }
+        this.renderDebtsList();
+      }
+
+      selectAllDebts(selectAll = true) {
+        if (selectAll) {
+          this.debts.forEach(d => this.selectedDebtIds.add(d.id));
+        } else {
+          this.selectedDebtIds.clear();
+        }
+        this.renderDebtsList();
+      }
+
+      updateSelectedDebtsBar() {
+        const countEl = document.getElementById('debts-selected-count');
+        const sumEl = document.getElementById('debts-selected-sum');
+        
+        let sum = 0;
+        this.debts.forEach(d => {
+          if (this.selectedDebtIds.has(d.id)) {
+            sum += d.pendingBalance;
+          }
+        });
+
+        countEl.innerText = this.selectedDebtIds.size;
+        sumEl.innerText = formatRD(sum);
+      }
+
+      openSettleDebtModal(debtId) {
+        const d = this.debts.find(x => x.id === debtId);
+        if (!d) return;
+
+        this.activeSettlingDebt = d;
+
+        document.getElementById('stl-client-name').innerText = d.clientName;
+        document.getElementById('stl-receipt-id').innerText = '#' + d.receiptId;
+        document.getElementById('stl-service-date').innerText = d.date || '-';
+        document.getElementById('stl-services-list').innerText = d.services;
+        document.getElementById('stl-total-amount').innerText = formatRD(d.totalAmount);
+        document.getElementById('stl-downpayment-amount').innerText = formatRD(d.downpayment);
+        document.getElementById('stl-pending-amount').innerText = formatRD(d.pendingBalance);
+
+        const receivedInp = document.getElementById('stl-received-amount');
+        receivedInp.value = d.pendingBalance;
+        receivedInp.max = d.pendingBalance;
+        this.updateSettlePreview(d.pendingBalance);
+
+        document.getElementById('modal-settle-debt-view').style.display = 'flex';
+      }
+
+      updateSettlePreview(amountVal) {
+        if (!this.activeSettlingDebt) return;
+        const currentDebt = this.activeSettlingDebt.pendingBalance;
+        const amount = Math.min(currentDebt, Math.max(0, Number(amountVal) || 0));
+        const remaining = Math.max(0, currentDebt - amount);
+        
+        const container = document.getElementById('stl-new-balance-hint');
+
+        if (remaining === 0) {
+          container.style.background = 'var(--status-paid-bg)';
+          container.style.color = 'var(--status-paid-text)';
+          container.style.borderColor = 'var(--status-paid-text)';
+          container.innerHTML = '✨ ¡La cuenta quedará completamente saldada! (<strong id="stl-calc-remaining">RD$ 0.00</strong>)';
+        } else {
+          container.style.background = 'var(--bg-surface-alt)';
+          container.style.color = 'var(--danger)';
+          container.style.borderColor = 'var(--border-subtle)';
+          container.innerHTML = `Balance restante después de este abono: <strong id="stl-calc-remaining">${formatRD(remaining)}</strong>`;
+        }
+      }
+
+      async confirmPaymentOrAbono() {
+        if (!this.activeSettlingDebt) return;
+        const d = this.activeSettlingDebt;
+        const received = Math.min(d.pendingBalance, Math.max(0, Number(document.getElementById('stl-received-amount').value) || 0));
+
+        if (received <= 0) {
+          this.showToast('Indica un monto válido para abonar o saldar');
+          return;
+        }
+
+        const method = document.getElementById('stl-payment-method').value;
+        const previousPending = d.pendingBalance;
+        const isFullSettlement = (received >= previousPending);
+
+        d.downpayment += received;
+        d.pendingBalance = Math.max(0, d.pendingBalance - received);
+
+        if (isFullSettlement) {
+          this.debts = this.debts.filter(x => x.id !== d.id);
+          this.selectedDebtIds.delete(d.id);
+        }
+
+        this.saveLocalDebts();
+        this.renderDebtsList();
+        this.closeModal('modal-settle-debt-view');
+
+        this.openDebtReceiptPreview(d.id, true, received, isFullSettlement, method);
+        this.showToast(isFullSettlement ? `✓ Cuenta saldada por completo` : `✓ Abono de ${formatRD(received)} registrado`);
+        
+        await this.apiCall("registrarAbono", { deuda: d });
+        this.activeSettlingDebt = null;
+      }
+
+      openDebtReceiptPreview(debtId, isAbonoEvent = false, abonoMonto = 0, isFull = false, method = 'Transferencia') {
+        const d = this.debts.find(x => x.id === debtId) || this.lastDebtGeneratedData;
+        if (!d) return;
+
+        this.lastDebtGeneratedData = { ...d, isAbonoEvent, abonoMonto, isFull, method };
+
+        const dLogoWrapper = document.getElementById('d-rcp-logo-wrapper');
+        if (this.config.logoUrl) {
+          dLogoWrapper.innerHTML = `<img src="${this.config.logoUrl}" class="rcp-logo-img" crossorigin="anonymous" alt="Logo">`;
+        } else {
+          dLogoWrapper.innerHTML = '';
+        }
+
+        document.getElementById('d-rcp-studio-name-view').innerText = this.config.studioName;
+        document.getElementById('d-rcp-id-view').innerText = '#' + d.receiptId;
+        document.getElementById('d-rcp-date-view').innerText = new Date().toLocaleString('es-DO', { dateStyle: 'medium', timeStyle: 'short' });
+        document.getElementById('d-rcp-client-view').innerText = d.clientName;
+        document.getElementById('d-rcp-services-view').innerText = d.services;
+        document.getElementById('d-rcp-total-view').innerText = formatRD(d.totalAmount);
+
+        const modalTitle = document.getElementById('d-modal-title');
+        const subtitle = document.getElementById('d-rcp-subtitle');
+        const badge = document.getElementById('d-rcp-status-badge');
+        const downLabel = document.getElementById('d-rcp-downpayment-label');
+        const downView = document.getElementById('d-rcp-downpayment-view');
+        const pendingRow = document.getElementById('d-rcp-pending-row');
+        const pendingView = document.getElementById('d-rcp-pending-view');
+        const footerNote = document.getElementById('d-rcp-footer-note');
+
+        if (isAbonoEvent) {
+          modalTitle.innerText = isFull ? "Comprobante de Cuenta Saldada ✨" : "Comprobante de Abono ✨";
+          modalTitle.style.color = isFull ? "#246B44" : "var(--primary-dark)";
+          subtitle.innerText = isFull ? "Recibo Oficial • Liquidación Total" : "Recibo Oficial • Abono a Cuenta";
+          
+          badge.className = isFull ? "status-badge paid" : "status-badge credit";
+          badge.innerText = isFull ? "CUENTA SALDADA" : "ABONO REGISTRADO";
+
+          downLabel.innerText = "ÚLTIMO PAGO RECIBIDO:";
+          downView.innerText = `${formatRD(abonoMonto)} (${method})`;
+
+          if (isFull) {
+            pendingRow.style.color = "#246B44";
+            document.getElementById('d-rcp-pending-label').innerText = "BALANCE RESTANTE:";
+            pendingView.innerText = "RD$ 0.00 (SALDADA)";
+            footerNote.innerText = "¡Tu cuenta ha quedado completamente saldada! Muchas gracias por tu confianza 💕✨";
+          } else {
+            pendingRow.style.color = "#B82836";
+            document.getElementById('d-rcp-pending-label').innerText = "NUEVO BALANCE PENDIENTE:";
+            pendingView.innerText = formatRD(d.pendingBalance);
+            footerNote.innerText = "Abono recibido correctamente. Agradecemos coordinar tu saldo pendiente. ¡Gracias! 💕✨";
+          }
+        } else {
+          modalTitle.innerText = "Recordatorio Oficial ✨";
+          modalTitle.style.color = "var(--danger)";
+          subtitle.innerText = "Estado de Cuenta • Recordatorio";
+          badge.className = "status-badge credit";
+          badge.innerText = "CUENTA PENDIENTE / FIADO";
+
+          downLabel.innerText = "ABONOS PREVIOS:";
+          downView.innerText = formatRD(d.downpayment);
+          pendingRow.style.color = "#B82836";
+          document.getElementById('d-rcp-pending-label').innerText = "BALANCE PENDIENTE:";
+          pendingView.innerText = formatRD(d.pendingBalance);
+          footerNote.innerText = "Agradecemos coordinar tu pago por transferencia o en el studio. ¡Gracias por tu preferencia! 💕✨";
+        }
+
+        const dueRow = document.getElementById('d-rcp-due-date-row');
+        if (d.dueDate && (!isAbonoEvent || !isFull)) {
+          dueRow.style.display = 'flex';
+          document.getElementById('d-rcp-due-date-view').innerText = d.dueDate;
+        } else {
+          dueRow.style.display = 'none';
+        }
+
+        document.getElementById('modal-debt-receipt-view').style.display = 'flex';
+        document.getElementById('btn-send-debt-ws').onclick = () => this.sendDebtToClientWhatsApp();
+      }
+
+      async sendDebtToClientWhatsApp() {
+        const d = this.lastDebtGeneratedData;
+        if (!d) return;
+
+        const target = document.getElementById('debt-receipt-capture-area');
+        let canvas = null;
+
+        try {
+          canvas = await html2canvas(target, { scale: 2.2, backgroundColor: '#ffffff', useCORS: true });
+        } catch (e) {
+          console.warn("Fallo en captura:", e);
+        }
+
+        let message = "";
+        if (d.isAbonoEvent) {
+          if (d.isFull) {
+            message = `💅✨ *${this.config.studioName}* ✨💅\n` +
+              `───────────────────────\n` +
+              `¡Hola *${d.clientName}*! 💕\n\n` +
+              `Te confirmamos que hemos recibido tu pago final de *${formatRD(d.abonoMonto)}* (${d.method}).\n\n` +
+              `🔖 *Referencia:* #${d.receiptId}\n` +
+              `💅 *Servicios:* ${d.services}\n` +
+              `✅ *ESTADO:* *CUENTA SALDADA POR COMPLETO (RD$ 0.00)*\n` +
+              `───────────────────────\n` +
+              `¡Muchísimas gracias por tu pago y preferencia! Lorelys te espera pronto 💕`;
+          } else {
+            message = `💅✨ *${this.config.studioName}* ✨💅\n` +
+              `───────────────────────\n` +
+              `¡Hola *${d.clientName}*! 💕\n\n` +
+              `Te confirmamos el registro de tu abono de *${formatRD(d.abonoMonto)}* (${d.method}).\n\n` +
+              `🔖 *Referencia:* #${d.receiptId}\n` +
+              `💵 *Monto Total:* ${formatRD(d.totalAmount)}\n` +
+              `💸 *Abonos Acumulados:* ${formatRD(d.downpayment)}\n` +
+              `🔴 *NUEVO BALANCE PENDIENTE:* *${formatRD(d.pendingBalance)}*\n` +
+              (d.dueDate ? `📅 *Fecha Límite:* ${d.dueDate}\n` : '') +
+              `───────────────────────\n` +
+              `¡Gracias por tu abono! Quedamos a tu orden. Lorelys 💕`;
+          }
+        } else {
+          message = `💅✨ *${this.config.studioName}* ✨💅\n` +
+            `───────────────────────\n` +
+            `¡Hola *${d.clientName}*! 💕 Esperamos que estés disfrutando tus uñas.\n\n` +
+            `Te compartimos el recordatorio de tu cuenta pendiente:\n\n` +
+            `🔖 *Referencia:* #${d.receiptId}\n` +
+            `💅 *Servicios:* ${d.services}\n` +
+            `💵 *Monto Total:* ${formatRD(d.totalAmount)}\n` +
+            `💸 *Abonos Previos:* ${formatRD(d.downpayment)}\n` +
+            `🔴 *BALANCE PENDIENTE:* *${formatRD(d.pendingBalance)}*\n` +
+            (d.dueDate ? `📅 *Fecha Límite:* ${d.dueDate}\n` : '') +
+            `───────────────────────\n` +
+            `📍 Puedes coordinar tu pago por transferencia bancaria o en el studio.\n\n` +
+            `¡Muchas gracias por tu preferencia! Lorelys 💕`;
+        }
+
+        if (canvas && navigator.canShare) {
+          canvas.toBlob(async (blob) => {
+            const fileName = d.isAbonoEvent ? (d.isFull ? `ComprobanteSaldado_${d.clientName.replace(/\s+/g, '_')}.png` : `ComprobanteAbono_${d.clientName.replace(/\s+/g, '_')}.png`) : `EstadoCuenta_${d.clientName.replace(/\s+/g, '_')}.png`;
+            const file = new File([blob], fileName, { type: 'image/png' });
+            if (navigator.canShare({ files: [file] })) {
+              try {
+                await navigator.share({
+                  files: [file],
+                  title: `Comprobante ${this.config.studioName}`,
+                  text: message
+                });
+                return;
+              } catch (err) {}
+            }
+            this.fallbackSend(canvas, d.clientPhone, message, d.receiptId);
+          });
+          return;
+        }
+
+        this.fallbackSend(canvas, d.clientPhone, message, d.receiptId);
+      }
+
+      async downloadDebtReceiptPNG() {
+        const d = this.lastDebtGeneratedData;
+        if (!d) return;
+        const target = document.getElementById('debt-receipt-capture-area');
+        const canvas = await html2canvas(target, { scale: 2.2, useCORS: true });
+        const a = document.createElement('a');
+        a.download = `Recibo_${d.receiptId}.png`;
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      }
+
+      sendBatchReminders() {
+        if (this.selectedDebtIds.size === 0) {
+          this.showToast('Selecciona al menos una clienta para cobrar');
+          return;
+        }
+
+        const selectedList = this.debts.filter(d => this.selectedDebtIds.has(d.id));
+        this.showToast(`Abriendo WhatsApp para ${selectedList.length} clienta(s)...`);
+
+        selectedList.forEach((d, idx) => {
+          setTimeout(() => {
+            const message = `💅✨ *${this.config.studioName}* ✨💅\n` +
+              `───────────────────────\n` +
+              `¡Hola *${d.clientName}*! 💕 Te enviamos este recordatorio de tu cuenta pendiente:\n\n` +
+              `💅 *Servicios:* ${d.services}\n` +
+              `🔴 *BALANCE PENDIENTE:* *${formatRD(d.pendingBalance)}*\n` +
+              (d.dueDate ? `📅 *Fecha Acordada:* ${d.dueDate}\n` : '') +
+              `───────────────────────\n` +
+              `Quedamos a tu orden para recibir tu pago. ¡Muchas gracias! 💕 Lorelys`;
+            const url = `https://wa.me/${d.clientPhone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+          }, idx * 1200);
+        });
+      }
+
+      setDefaultNextDate() {
+        const d = new Date();
+        d.setDate(d.getDate() + 21);
+        document.getElementById('pay-next-date').value = d.toISOString().split('T')[0];
+      }
+
+      setDefaultDueDate() {
+        const d = new Date();
+        d.setDate(d.getDate() + 7);
+        document.getElementById('credit-due-date').value = d.toISOString().split('T')[0];
+      }
+
+      setPaymentType(type) {
+        this.paymentType = type;
+        const btnPaid = document.getElementById('btn-status-paid');
+        const btnCredit = document.getElementById('btn-status-credit');
+        const paidBox = document.getElementById('paid-details-box');
+        const creditBox = document.getElementById('credit-details-box');
+        const totalLbl = document.getElementById('bar-total-label');
+
+        if (type === 'PAGADO') {
+          btnPaid.className = 'toggle-btn active-paid';
+          btnCredit.className = 'toggle-btn';
+          paidBox.style.display = 'block';
+          creditBox.style.display = 'none';
+          totalLbl.innerText = 'TOTAL FACTURADO:';
+        } else {
+          btnPaid.className = 'toggle-btn';
+          btnCredit.className = 'toggle-btn active-credit';
+          paidBox.style.display = 'none';
+          creditBox.style.display = 'block';
+          totalLbl.innerText = 'TOTAL FIADO / DEUDA:';
+        }
+
+        this.calculateTotals();
+      }
+
+      renderQuickChips() {
+        const c = document.getElementById('quick-services-chips');
+        c.innerHTML = this.quickServices.map((s, idx) => `
+          <button class="chip-btn" onclick="studioApp.addPredefinedServiceItem('${s.id}')">
+            <span>+</span> ${s.nombre} (${formatRD(s.precio)})
+          </button>
+        `).join('');
+      }
+
+      addPredefinedServiceItem(srvId) {
+        const s = this.quickServices.find(x => x.id === srvId);
+        if (!s) return;
+        this.appliedItems.push({ id: Date.now() + Math.random(), nombre: s.nombre, precio: s.precio });
+        this.renderAppliedItems();
+        this.calculateTotals();
+        this.showToast(`✓ ${s.nombre} añadido`);
+      }
+
+      addCustomItem() {
+        const nomInp = document.getElementById('custom-item-name');
+        const preInp = document.getElementById('custom-item-price');
+        const nom = nomInp.value.trim();
+        const pre = Number(preInp.value);
+
+        if (!nom || pre <= 0) {
+          this.showToast('Indica nombre y monto válido');
+          return;
+        }
+
+        this.appliedItems.push({ id: Date.now(), nombre: nom, precio: pre });
+        nomInp.value = '';
+        preInp.value = '';
+        this.renderAppliedItems();
+        this.calculateTotals();
+      }
+
+      removeItem(id) {
+        this.appliedItems = this.appliedItems.filter(x => x.id !== id);
+        this.renderAppliedItems();
+        this.calculateTotals();
+      }
+
+      renderAppliedItems() {
+        const c = document.getElementById('applied-items-list');
+        if (this.appliedItems.length === 0) {
+          c.innerHTML = `<div style="text-align:center; padding:1.2rem 1rem; color:var(--text-muted); font-size:0.82rem;">Ningún servicio añadido aún</div>`;
+          return;
+        }
+
+        c.innerHTML = this.appliedItems.map(it => `
+          <div class="applied-item-row">
+            <div>
+              <strong style="font-size:0.88rem;">${it.nombre}</strong>
+              <div style="font-size:0.82rem; color:var(--primary); font-weight:800; margin-top:2px;">${formatRD(it.precio)}</div>
+            </div>
+            <button class="item-del-btn" onclick="studioApp.removeItem(${it.id})"><i class="fa-solid fa-trash-can"></i></button>
+          </div>
+        `).join('');
+      }
+
+      calculateTotals() {
+        const subtotal = this.appliedItems.reduce((a, b) => a + b.precio, 0);
+        let discount = 0;
+        let downpayment = 0;
+        let total = subtotal;
+        let pendingBalance = 0;
+
+        if (this.paymentType === 'PAGADO') {
+          discount = Number(document.getElementById('pay-discount').value) || 0;
+          total = Math.max(0, subtotal - discount);
+          document.getElementById('bar-total-val').innerText = formatRD(total);
+        } else {
+          downpayment = Number(document.getElementById('credit-downpayment').value) || 0;
+          pendingBalance = Math.max(0, subtotal - downpayment);
+          document.getElementById('bar-total-val').innerText = formatRD(pendingBalance);
+        }
+
+        return { subtotal, discount, total, downpayment, pendingBalance };
+      }
+
+      async generateAndPreviewReceipt() {
+        const clientName = document.getElementById('cli-name').value.trim();
+        const clientPhone = document.getElementById('cli-phone').value.trim().replace(/\D/g, '');
+        const clientIg = document.getElementById('cli-ig').value.trim();
+
+        if (!clientName) {
+          this.showToast('Indica el nombre de la clienta');
+          return;
+        }
+        if (!clientPhone || clientPhone.length < 8) {
+          this.showToast('Indica el WhatsApp de la clienta');
+          return;
+        }
+        if (this.appliedItems.length === 0) {
+          this.showToast('Agrega al menos un servicio');
+          return;
+        }
+
+        let clientObj = { nombre: clientName, telefono: clientPhone, ig: clientIg, notas: '' };
+
+        if (document.getElementById('chk-save-client-auto').checked) {
+          const existingIdx = this.clients.findIndex(c => c.telefono === clientPhone);
+          if (existingIdx >= 0) {
+            clientObj.id = this.clients[existingIdx].id;
+            this.clients[existingIdx].nombre = clientName;
+            this.clients[existingIdx].ig = clientIg;
+          } else {
+            clientObj.id = 'CLI-' + Date.now().toString().slice(-4);
+            this.clients.unshift(clientObj);
+          }
+          this.saveLocalClients();
+          this.renderClientsSelect();
+          this.renderAppointmentClientsSelect();
+          this.apiCall("guardarClienta", { clienta: clientObj });
+        }
+
+        const totals = this.calculateTotals();
+        const seq = Math.floor(1000 + Math.random() * 9000);
+        const receiptId = `LOR-${new Date().getFullYear()}-${seq}`;
+        const dateStr = new Date().toLocaleString('es-DO', { dateStyle: 'medium', timeStyle: 'short' });
+        const todayStr = new Date().toISOString().split('T')[0];
+
+        const payMethod = document.getElementById('pay-method').value;
+        const nextDate = document.getElementById('pay-next-date').value;
+        const dueDate = document.getElementById('credit-due-date').value;
+
+        this.salesHistory.unshift({
+          id: receiptId,
+          date: todayStr,
+          total: this.paymentType === 'PAGADO' ? totals.total : totals.downpayment,
+          paymentType: this.paymentType
+        });
+        this.saveLocalSales();
+
+        let debtObj = null;
+        if (this.paymentType === 'FIADO' && totals.pendingBalance > 0) {
+          const servicesList = this.appliedItems.map(it => it.nombre).join(' + ');
+          debtObj = {
+            id: 'DEBT-' + Date.now().toString().slice(-4),
+            receiptId,
+            clientName,
+            clientPhone,
+            services: servicesList,
+            totalAmount: totals.subtotal,
+            downpayment: totals.downpayment,
+            pendingBalance: totals.pendingBalance,
+            date: todayStr,
+            dueDate: dueDate || ''
+          };
+          this.debts.unshift(debtObj);
+          this.saveLocalDebts();
+          this.renderDebtsList();
+          this.apiCall("registrarAbono", { deuda: debtObj });
+        }
+
+        this.lastGeneratedData = {
+          receiptId,
+          dateStr,
+          clientName,
+          clientPhone,
+          items: [...this.appliedItems],
+          paymentType: this.paymentType,
+          subtotal: totals.subtotal,
+          discount: totals.discount,
+          total: totals.total,
+          downpayment: totals.downpayment,
+          pendingBalance: totals.pendingBalance,
+          payMethod,
+          nextDate,
+          dueDate
+        };
+
+        this.apiCall("guardarFactura", { factura: this.lastGeneratedData });
+
+        const logoWrapper = document.getElementById('rcp-logo-wrapper');
+        if (this.config.logoUrl) {
+          logoWrapper.innerHTML = `<img src="${this.config.logoUrl}" class="rcp-logo-img" crossorigin="anonymous" alt="Logo">`;
+        } else {
+          logoWrapper.innerHTML = '';
+        }
+
+        document.getElementById('rcp-studio-name-view').innerText = this.config.studioName;
+        document.getElementById('rcp-studio-sub-view').innerText = this.config.studioSub;
+        document.getElementById('rcp-footer-note-view').innerText = this.config.studioFooter;
+
+        document.getElementById('rcp-id-view').innerText = '#' + receiptId;
+        document.getElementById('rcp-date-view').innerText = dateStr;
+        document.getElementById('rcp-client-view').innerText = clientName;
+        document.getElementById('rcp-subtotal-view').innerText = formatRD(totals.subtotal);
+
+        const statusBadge = document.getElementById('rcp-status-badge');
+        const paidBox = document.getElementById('rcp-paid-summary');
+        const creditBox = document.getElementById('rcp-credit-summary');
+
+        if (this.paymentType === 'PAGADO') {
+          statusBadge.className = 'status-badge paid';
+          statusBadge.innerText = 'PAGADO AL CONTADO';
+          paidBox.style.display = 'block';
+          creditBox.style.display = 'none';
+
+          document.getElementById('rcp-total-view').innerText = formatRD(totals.total);
+          document.getElementById('rcp-pay-view').innerText = payMethod;
+
+          const discRow = document.getElementById('rcp-discount-row');
+          if (totals.discount > 0) {
+            discRow.style.display = 'flex';
+            document.getElementById('rcp-discount-view').innerText = '-' + formatRD(totals.discount);
+          } else {
+            discRow.style.display = 'none';
+          }
+        } else {
+          statusBadge.className = 'status-badge credit';
+          statusBadge.innerText = 'CUENTA POR COBRAR / FIADO';
+          paidBox.style.display = 'none';
+          creditBox.style.display = 'block';
+          document.getElementById('rcp-discount-row').style.display = 'none';
+
+          document.getElementById('rcp-downpayment-view').innerText = formatRD(totals.downpayment);
+          document.getElementById('rcp-pending-view').innerText = formatRD(totals.pendingBalance);
+
+          const dueRow = document.getElementById('rcp-due-date-row');
+          if (dueDate) {
+            dueRow.style.display = 'flex';
+            document.getElementById('rcp-due-date-view').innerText = dueDate;
+          } else {
+            dueRow.style.display = 'none';
+          }
+        }
+
+        document.getElementById('rcp-items-list-view').innerHTML = this.appliedItems.map(it => `
+          <div class="rcp-row">
+            <span>• ${it.nombre}</span>
+            <span>${formatRD(it.precio)}</span>
+          </div>
+        `).join('');
+
+        const nextBox = document.getElementById('rcp-next-visit-box');
+        if (nextDate) {
+          nextBox.style.display = 'block';
+          document.getElementById('rcp-next-date-view').innerText = nextDate;
+        } else {
+          nextBox.style.display = 'none';
+        }
+
+        document.getElementById('modal-receipt-view').style.display = 'flex';
+        document.getElementById('btn-send-to-client-ws').onclick = () => this.sendToClientWhatsApp();
+      }
+
+      closeReceiptModalAndReset() {
+        this.closeModal('modal-receipt-view');
+        this.clearBillingForm();
+      }
+
+      clearBillingForm() {
+        document.getElementById('select-registered-client').value = '';
+        document.getElementById('saved-client-badge').style.display = 'none';
+        document.getElementById('cli-name').value = '';
+        document.getElementById('cli-phone').value = '';
+        document.getElementById('cli-ig').value = '';
+        document.getElementById('pay-discount').value = '0';
+        document.getElementById('credit-downpayment').value = '0';
+        this.appliedItems = [];
+        this.setPaymentType('PAGADO');
+        this.renderAppliedItems();
+        this.calculateTotals();
+        this.setDefaultNextDate();
+        this.setDefaultDueDate();
+      }
+
+      async sendToClientWhatsApp() {
+        const d = this.lastGeneratedData;
+        if (!d) return;
+
+        const target = document.getElementById('receipt-capture-area');
+        let canvas = null;
+
+        try {
+          canvas = await html2canvas(target, { scale: 2.2, backgroundColor: '#ffffff', useCORS: true });
+        } catch (e) {
+          console.warn("Fallo en captura:", e);
+        }
+
+        const itemsListText = d.items.map(it => `• *${it.nombre}* — ${formatRD(it.precio)}`).join('\n');
+        
+        let paymentInfoText = "";
+        if (d.paymentType === 'PAGADO') {
+          paymentInfoText = `💵 *Subtotal:* ${formatRD(d.subtotal)}\n` +
+            (d.discount > 0 ? `🎟️ *Descuento:* -${formatRD(d.discount)}\n` : '') +
+            `✅ *TOTAL PAGADO:* *${formatRD(d.total)}*\n` +
+            `💳 *Método:* ${d.payMethod}\n` +
+            `📌 *Condición:* PAGADO AL INSTANTE`;
+        } else {
+          paymentInfoText = `💵 *Total Servicios:* ${formatRD(d.subtotal)}\n` +
+            `💸 *Abono Recibido:* ${formatRD(d.downpayment)}\n` +
+            `🔴 *BALANCE PENDIENTE:* *${formatRD(d.pendingBalance)}*\n` +
+            (d.dueDate ? `📅 *Fecha Límite:* ${d.dueDate}\n` : '') +
+            `📌 *Condición:* CUENTA POR COBRAR (FIADO)`;
+        }
+
+        const message = `💅✨ *${this.config.studioName}* ✨💅\n` +
+          `───────────────────────\n` +
+          `¡Hola *${d.clientName}*! 💕 Fue un placer atenderte hoy.\n\n` +
+          `Te compartimos el comprobante de tu servicio:\n\n` +
+          `🔖 *Comprobante:* #${d.receiptId}\n` +
+          `👩‍🎨 *Atendida por:* Lorelys\n\n` +
+          `📝 *Detalle de Servicios:*\n${itemsListText}\n\n` +
+          `───────────────────────\n` +
+          `${paymentInfoText}\n` +
+          `───────────────────────\n` +
+          (d.nextDate ? `🗓️ *Tu próximo retoque sugerido:* ${d.nextDate}\n\n` : '\n') +
+          `¡Muchas gracias por preferir a Lorelys Nails! 💕`;
+
+        if (canvas && navigator.canShare) {
+          canvas.toBlob(async (blob) => {
+            const file = new File([blob], `Comprobante_LorelysNails_${d.clientName.replace(/\s+/g, '_')}.png`, { type: 'image/png' });
+            if (navigator.canShare({ files: [file] })) {
+              try {
+                await navigator.share({
+                  files: [file],
+                  title: `Comprobante ${this.config.studioName}`,
+                  text: message
+                });
+                this.closeReceiptModalAndReset();
+                return;
+              } catch (err) {}
+            }
+            this.fallbackSend(canvas, d.clientPhone, message, d.receiptId);
+          });
+          return;
+        }
+
+        this.fallbackSend(canvas, d.clientPhone, message, d.receiptId);
+      }
+
+      fallbackSend(canvas, phone, message, receiptId) {
+        if (canvas) {
+          const a = document.createElement('a');
+          a.download = `Comprobante_LorelysNails_${receiptId}.png`;
+          a.href = canvas.toDataURL('image/png');
+          a.click();
+        }
+
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+        this.closeReceiptModalAndReset();
+      }
+
+      async downloadReceiptPNG() {
+        const target = document.getElementById('receipt-capture-area');
+        const canvas = await html2canvas(target, { scale: 2.2, useCORS: true });
+        const a = document.createElement('a');
+        a.download = `Comprobante_LorelysNails_${this.lastGeneratedData.receiptId}.png`;
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      }
+
+      closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+      }
+    }
+
+    const studioApp = new LorelysNailsApp();
+  </script>
+</body>
+</html>
